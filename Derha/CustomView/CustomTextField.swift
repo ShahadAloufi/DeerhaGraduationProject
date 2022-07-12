@@ -201,24 +201,9 @@ struct CustomTextFieldForNumbersBatches: View {
 
 struct CustomTextFieldForDatesBatches: View {
     @ObservedObject var batchViewModel = BatchViewModel()
-//    @Binding var date :Date
+
     @State private var showPicker: Bool = false
     @Binding var selectedDateText:String
-//   
-//     private var selectedDate: Binding<Date> {
-//       Binding<Date>(get: { self.date}, set : {
-//           self.date = $0
-//           self.setDateString()
-//       })
-//     }
-//
-//    private func setDateString() {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-//        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        self.selectedDateText = dateFormatter.string(from: self.date)
-//      }
 
     
     
@@ -231,17 +216,7 @@ struct CustomTextFieldForDatesBatches: View {
             
             HStack {
                 TextField("", text: $selectedDateText).padding()
-//                    .onAppear() {
-//                        self.setDateString()
-//                    }.overlay(
-//                        HStack{
-//
-//
-//                            DatePicker("", selection: selectedDate, in: Date()...
-//                        ,displayedComponents: .date)
-//
-//                        }
-//                    )
+
                   
                    .frame(width: 289, height: 42.0)
                    .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
