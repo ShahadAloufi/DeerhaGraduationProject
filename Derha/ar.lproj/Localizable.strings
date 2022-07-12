@@ -1,0 +1,85 @@
+/* 
+  Localizable.strings
+  Derha
+
+  Created by shahadmufleh on 09/07/2022.
+  
+*/
+
+
+"Checkout" = "الدفع";
+"Online Order" = "الطلب اونلاين";
+"Stock" = "المخزون";
+"Add Product" = "أضف منتج";
+"Sami" = "سامي";
+"Barcode Number" = "رمز المنتج";
+"Arabic Name" = "اسم المنتج بالعربي";
+"English Name" = "اسم المنتج بالانجليزي";
+"Quantity" = "الكمية";
+"Price" = "السعر";
+"Total" = "المجموع";
+"Sub Total" = "المجموع الفرعي";
+"Tax 15%" = "الضريبة";
+"Total" = "المجموع";
+"Credit Card" = "بطاقة اتمانية";
+"Cash" = "نقد";
+"Checkout" = "الدفع";
+"You still have not received any orders" = "لم تصلك أي طلبات بعد";
+" Scan barcode number here" = "امسح رمز المنتج هنا";
+"Total" = "المجموع";
+"Received Amount" = "المبلغ المستلم";
+"Left" = "الباقي";
+"Add" = "اضافة";
+"Product Code" = "رمز المنتج";
+"Product Name" = "اسم المنتج";
+"Quantity" = "الكمية";
+"Price" = "السعر";
+"Expiration Date" = "تاريخ الانتهاء";
+"Product Category" = "التصنيف";
+"Category" = "التصنيف";
+"Beverages" = "مشروبات";
+"Snacks" = "وجبات خفيفة";
+"Dairy" = "الالبان";
+"Drinks" = "مشروب";
+"Edit" = "تعديل";
+"SAR" = "ر.س";
+"BatchAlert" = "تنبية الدفعة";
+"Product Description" = "وصف المنتج";
+"BatchNumber" = "رقم الدفعة";
+"َQuantity" = "الكمية";
+"Unit" = "الوحدة";
+"Exp Date" = "تاريخ الانتهاء";
+"StockInformation" = "معلومات المخزون";
+"Product Name In Arabic" = "اسم المنتج بالعربي";
+"Product Name In English" = "اسم المنتج بالانجليزي";
+"Barcode" = "الباركود";
+"Unit" = "الوحدة";
+"Exp Date" = "تاريخ الانتهاء";
+"َQuantity" = "الكمية";
+"Alert me when remaining quantity is" = " التنبية بالكمية المتبيقة ";
+"Price" = "السعر";
+"Clear" = "مسح";
+"Add" = "اضافة";
+"Vegetables" = "الخضروات";
+"Desserts" = "الحلويات";
+"Canned Goods" = "المعلبات";
+"Meat" = "اللحوم";
+"Frozen Foods" = "الأطعمة المجمدة";
+"Condiments & Spices" = "التوابل";
+"Fish & Seafood" = "الأسماك والمنتجات البحرية";
+" Bread & Bakery" = "المخبوزات";
+" Pasta, Rice & Cereal" = "المعكرونة و الأرز و الحبوب";
+"Done" = "تم";
+"Cancel" = "إلغاء";
+"Product Info" = "معلومات المنتج";
+"Add Batch" = "اضافة دفعة";
+"You can add batches to this product" = "يمكنك إضافة دفعات جديدة لهذا المنتج";
+"Household & Cleaning Supplies" = "مستلزمات المنزل والمنظفات";
+"Baby Items" = "مستلزمات الأطفال";
+"Pet Care" = "رعاية الحيوانات الأليفة";
+"Personal Care" = "العناية الشخصية";
+"Health Care" = "العناية الصحية";
+"Deli" = "الأطعمة الجاهزة";
+"Fruits" = "الفواكهة";
+"BatchFor" = "دفعة رقم للمنتج";
+

@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  Derha
+
+  Created by shahadmufleh on 09/07/2022.
+  
+*/
+
+"Checkout" = "Checkout";
+"Online Order" = "Online Order";
+"Stock" = "Stock";
+"Add Product" = "Add Product";
+"Clear" = "Clear";
+"Barcode Number" = "Product Code";
+"Arabic Name" = "Arabic Name";
+"English Name" ="English Name";
+"Quantity" ="Quantity" ;
+"Price" = "Price";
+" Scan barcode number here" = " Scan barcode number here";
+"You still have not received any orders" = "You still have not received any orders";
+"Total" = "Total";
+"Credit Card" = "Credit Card";
+"Cash" = "Cash";
+"Checkout" = "Checkout";
+"Received Amount" = "Received Amount";
+"Left" = "Left";
+"Add" = "Add";
+"Product Code" = "Product Code";
+"Product Name" = "Product Name";
+"Quantity" = "Quantity";
+"Price" = "Price";
+"Expiration Date" = "Expiration Date";
+"Product Category" = "Product Category";
+"Product Description" = "Product Description";
+"Category" = "Category";
+"Edit" = "Edit";
+"Product Name In Arabic" ="Product Name In Arabic";
+"Product Name In English" = "Product Name In English";
+"Barcode" = "Product Code";
+"Unit" ="Unit";
+"Sub Total" = "Sub Total";
+"Tax 15%" = "Tax 15%";
+"Alert me when remaining quantity is" = "Alert me when remaining quantity is";
+"Done" = "Done";
+"Cancel" = "Cancel";
+"Product Info" = "Product Info";
+"Add Batch" = "Add Batch";
+"You can add batches to this product" = "You can add batches to this product";
+"Dairy" = "Dairy";
+"Vegetables" = "Vegetables";
+"SAR" = "SAR";
+"Fruits" = "Fruits";
+"Beverages" = "Beverages";
+"Desserts" = "Desserts";
+"Canned Goods" = "Canned Goods";
+"Meat" = "Meat";
+"Fish & Seafood" = "Fish & Seafood";
+"Deli" = "Deli";
+"Condiments & Spices" = "Condiments & Spices";
+"Snacks" = "Snacks";
+" Bread & Bakery" = " Bread & Bakery";
+" Pasta, Rice & Cereal" =" Pasta, Rice & Cereal";
+"Baking" = "Baking";
+"Frozen Foods" = "Frozen Foods";
+"Personal Care" = "Personal Care";
+"Health Care" = "Health Care";
+"Household & Cleaning Supplies" = "Household & Cleaning Supplies";
+"Baby Items" = "Baby Items";
+"Pet Care" = "Pet Care";

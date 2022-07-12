@@ -1,0 +1,72 @@
+/* 
+  Localizable.strings
+  Derha
+
+  Created by shahadmufleh on 09/07/2022.
+  
+*/
+
+
+"Checkout" = "चेक आउट";
+"Online Order" = "ऑनलाइन ऑर्डर";
+"Stock" = "भंडार";
+"Add Product" = "उत्पाद जोड़ें";
+"Clear" = "मिटाना";
+"Barcode Number" = "आइटमबारोड";
+"Arabic Name" = "वस्तु का नाम अरबी ";
+"English Name" = "आइटम का नाम अंग्रेजी";
+"Quantity" = "मात्रा";
+"Price" = "कीमत";
+" Scan barcode number here" = "बारकोड नंबर यहां स्कैन करें";
+"You still have not received any orders" = "आपको अभी भी कोई आदेश नहीं मिला है";
+"Total" = "कुल";
+"Total" = "कुल";
+"Credit Card" = "क्रेडिट कार्ड";
+"Cash" = "नकद";
+"Checkout" = "चेक आउट";
+"Total" = "कुल";
+"Received Amount" = "प्राप्त हुआ";
+"Left" = "बाएं";
+"Add" = "जोड़ें";
+"Product Code" = "आइटमबारोड";
+"Product Name" = "आइटम का नाम अंग्रेजी";
+"Quantity" = "मात्रा";
+"Price" = "कीमत";
+"Expiration Date" = "समाप्ति तिथि";
+"Product Category" = "श्रेणी";
+"Product Description" = "उत्पाद वर्णन";
+"Category" = "श्रेणी";
+"Edit" = "संपादन करना";
+"Product Name In Arabic" = "वस्तु का नाम अरबी ";
+"Product Name In English" = "आइटम का नाम अंग्रेजी";
+"Barcode" = "आइटमबारोड";
+"Unit" = "इकाई";
+"Sub Total" = "उप कुल";
+"Tax 15%" = "कर 15%";
+"Alert me when remaining quantity is" = "सतर्क होने पर शेष मात्रा है";
+"Done" = "किया हुआ";
+"Cancel" = "रद्द करना";
+"Product Info" = "उत्पाद की जानकारी";
+"Add Batch" = "बैच जोड़ें";
+"You can add batches to this product" = "आप इस उत्पाद में बैच जोड़ सकते हैं";
+"Dairy" = "डेयरी";                                                          
+"Vegetables" = "सब्जियां";
+"SAR" = "सऊदी रियाल";
+"Fruits" = "फल";
+"Beverages" = "पेय पदार्थ";
+"Desserts" = "डेसर्ट";
+"Canned Goods" = "डिब्बाबंद सामान";
+"Meat" = "मांस";
+"Fish & Seafood" = "मछली और समुद्री भोजन";
+"Deli" = "डेली";
+"Condiments & Spices" = "मसालों और मसाले";
+"Snacks" = "नाश्ता";
+" Bread & Bakery" = " ब्रेड एंड बेकरी";
+" Pasta, Rice & Cereal" = "पास्ता, चावल और अनाज";
+"Baking" = "बेकिंग";
+"Frozen Foods" = "फ्रोजन फूड्स";
+"Personal Care" = "पर्सनल केयर";
+"Health Care" = "स्वास्थ्य देखभाल";
+"Household & Cleaning Supplies" = "घरेलू और सफाई आपूर्ति";
+"Baby Items" = "बेबी आइटम";
+"Pet Care" = "पेट केयर";

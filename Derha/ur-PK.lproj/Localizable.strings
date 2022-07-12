@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  Derha
+
+  Created by shahadmufleh on 09/07/2022.
+  
+*/
+
+
+"Checkout" = "चेक आउट";
+"Online Order" = "ऑनलाइन ऑर्डर";
+"Stock" = "भंडार";
+"AddProduct" = "उत्पाद जोड़ें";
+"Barcode Number" = "आइटमबारोड";
+"ItemNameAR" = "वस्तु का नाम अरबी ";
+"Item Name Eng" = "आइटम का नाम अंग्रेजी";
+"Quantity" = "मात्रा";
+"Price" = "कीमत";
+"Total" = "कुल";
+"Total" = "कुल";
+"Credit Card" = "क्रेडिट कार्ड";
+"Cash" = "नकद";
+"Checkout" = "चेक आउट";
+
+//Checkout pop up
+"Total" = "कुल";
+"Received" = "प्राप्त हुआ";
+"left" = "बाएं";
+"Add" = "जोड़ें";
+
+
+
+//stock
+"Product Code" = "आइटमबारोड";
+"Product Name" = "आइटम का नाम अंग्रेजी";
+"Quantity" = "मात्रा";
+"Price" = "कीमत";
+"Expiration Date" = "समाप्ति तिथि";
+"Product Category" = "श्रेणी";
+"Product Description" = "उत्पाद वर्णन";
+"Category" = "श्रेणी";
+"Edit" = "संपादन करना";
+
+
+//add product
+
+"Product Name In Arabic" = "वस्तु का नाम अरबी ";
+"Product Name In English" = "आइटम का नाम अंग्रेजी";
+"Barcode" = "आइटमबारोड";
+"Unit" = "इकाई";
+
+
+"Alert me when remaining quantity is" = "सतर्क होने पर शेष मात्रा है";
+
+
