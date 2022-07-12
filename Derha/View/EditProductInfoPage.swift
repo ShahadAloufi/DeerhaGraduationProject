@@ -300,12 +300,12 @@ struct EditProductInfoPage: View {
             ZStack{
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
-                    .frame(width: 650, height: 182.0)
+                    .frame(width: 650, height: 130.0)
                 
                   ContainerRelativeShape()
 
                       .foregroundColor(Color(red: 0.463, green: 0.483, blue: 1.034))
-                      .frame(width: 6, height: 180.0)
+                      .frame(width: 6, height: 130.0)
                       .cornerRadius(12)
                       .padding(.trailing, 642)
                   
