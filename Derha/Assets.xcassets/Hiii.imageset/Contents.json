@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Tab Bar.pdf",
+      "filename" : "604675E6-8873-4004-8BE8-351DCC492DC2_1_201_a-removebg-preview.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -17,5 +17,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>527920544765-mgoc1oe8psi9t4m4l3aucpt840nat8ao.apps.googleusercontent.com</string>
+	<string>347846429726-6516h38nkickcoar2msskd2r59s5autj.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.527920544765-mgoc1oe8psi9t4m4l3aucpt840nat8ao</string>
+	<string>com.googleusercontent.apps.347846429726-6516h38nkickcoar2msskd2r59s5autj</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAUpJWnrqk02YiVVETDhLt5cUCP8lLm1g0</string>
+	<string>AIzaSyBJY2Bkq7_nZbFRDqjMkYf4iygaATsSFNc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>527920544765</string>
+	<string>347846429726</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.inffe.team</string>
 	<key>PROJECT_ID</key>
-	<string>deerha-pos-878c2</string>
+	<string>deerha-pos-641b1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>deerha-pos-878c2.appspot.com</string>
+	<string>deerha-pos-641b1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:527920544765:ios:ba2c8285bd9c9cfb23b794</string>
+	<string>1:347846429726:ios:b1d73f8f82c1e2122bf20f</string>
 </dict>
 </plist>
