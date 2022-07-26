@@ -15,7 +15,7 @@ struct ClearButton: View {
 
             .foregroundColor(Color(red: 0.463, green: 0.483, blue: 1.034))
             .bold()
-        .frame(width: 150.72, height: 40)
+        .frame(width: UIScreen.main.bounds.width * 0.14, height: UIScreen.main.bounds.height * 0.05)
         .background(RoundedRectangle(cornerRadius: 6).stroke(Color(red: 0.463, green: 0.483, blue: 1.034), lineWidth: 2))
 
     }

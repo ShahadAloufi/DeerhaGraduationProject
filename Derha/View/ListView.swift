@@ -9,135 +9,164 @@ import SwiftUI
 import FirebaseFirestore
 import Firebase
 struct ListView: View {
-    @ObservedObject var example = ProductsViewModel()
-    @State private var selectedMovie: String? = nil
+    @ObservedObject var viewModel = ProductsViewModel()
     @Binding var SearchText: String
-    @State var showingPopover = false
     @Environment(\.editMode) var editMode
-  
+    @StateObject var authViewModel = AuthViewModel()
     var body: some View {
-        VStack{
-            VStack {
-                HStack {
-                    
-                        HStack {
-
-                            Text("Product Code")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .frame(width: UIScreen.main.bounds.width * 0.13, height: 40)
-                            Text("Product Name")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .frame(width: UIScreen.main.bounds.width * 0.13, height: 40)
-                            Text("Price")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .frame(width: UIScreen.main.bounds.width * 0.13, height: 40)
+        ZStack {
+            VStack{
+                VStack {
+                    HStack {
+                        
                             HStack {
 
-                                Text("Quantity")
+                                Text("Product Code")
                                     .font(.headline)
                                     .fontWeight(.bold)
+                                    .frame(width: UIScreen.main.bounds.width * 0.13, height: 40)
+                                Text("Product Name")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                    .frame(width: UIScreen.main.bounds.width * 0.13, height: 40)
+                                Text("Price")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                    .frame(width: UIScreen.main.bounds.width * 0.13, height: 40)
+                                HStack {
+
+                                    Text("Quantity")
+                                        .font(.headline)
+                                        .fontWeight(.bold)
 
 
-                                        Button {
-                                            updateFilterByDescendingOrder()
-                                        
+                                            Button {
+                                                updateFilterByDescendingOrder()
+                                            
 
-                                        } label: {
-                                            Image("column-sort-unspecified")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .foregroundColor(Color.black)
+                                            } label: {
+                                                Image("column-sort-unspecified")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .foregroundColor(Color.black)
+
+                                        }
+
+
+
+                                } .frame(width: UIScreen.main.bounds.width * 0.13, height: 30)
+                                HStack {
+                                    Text("Category")
+                                        .font(.headline)
+                                        .fontWeight(.bold)
+
+
+
+
+                                } .frame(width: UIScreen.main.bounds.width * 0.13, height: 40)
+
+
+
+
+                                HStack {
+                                    Text("Expiration Date")
+                                        .font(.headline)
+                                        .fontWeight(.bold)
+
+
+                                    Button {
+
+                                        updateFilterByAscendingOrderToDate()
+                                    } label: {
+                                        Image("column-sort-unspecified")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .foregroundColor(Color.black)
 
                                     }
 
-
-
-                            } .frame(width: UIScreen.main.bounds.width * 0.13, height: 30)
-                            HStack {
-                                Text("Category")
-                                    .font(.headline)
-                                    .fontWeight(.bold)
-
-
-
-
-                            } .frame(width: UIScreen.main.bounds.width * 0.13, height: 40)
-
-
-
-
-                            HStack {
-                                Text("Expiration Date")
-                                    .font(.headline)
-                                    .fontWeight(.bold)
-
-
-                                Button {
-
-                                    updateFilterByAscendingOrderToDate()
-                                } label: {
-                                    Image("column-sort-unspecified")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .foregroundColor(Color.black)
-
-                                }
-
-                            } .frame(width: UIScreen.main.bounds.width * 0.13, height: 30)
+                                } .frame(width: UIScreen.main.bounds.width * 0.15, height: 30)
 
 
 
 
 
-                        }
-                      
-                    
-                    
-                    
-                }.padding(.top)
-            }
-          
-            
-            
-            List{
+                            }
+                          
+                        
+                        
+                        
+                    }.padding(.top)
+                }
               
-                ForEach(Array(zip(example.product.indices, example.product.filter({"\($0.barcodeNumber)".contains(SearchText) || SearchText.isEmpty}))), id: \.1) { index, i in
                 
                 
-                    RowView(product: i)
+                List{
+                  
+                    ForEach(Array(zip(viewModel.product.indices, viewModel.product.filter({"\($0.barcodeNumber)".contains(SearchText) || SearchText.isEmpty}))), id: \.1) { index, i in
                     
                     
-                        .listRowBackground((index % 2 == 0) ? Color(red: 0.958, green: 0.958, blue: 0.958) : Color(.white) )
-                
-                }   .onDelete(perform:{ indexSet in
+                        RowView(product: i)
+                        
+                        
+                            .listRowBackground((index % 2 == 0) ? Color(red: 0.958, green: 0.958, blue: 0.958) : Color(.white) )
                     
-                    _ = indexSet.map {
-                let id = example.product[$0].barcodeNumber
+                    }   .onDelete(perform:{ indexSet in
+                        
+                        _ = indexSet.map {
+                    let id = viewModel.product[$0].barcodeNumber
+                           
+                           
+                            self.delete(id: id )
+                           
+                        }
                        
-                       
-                        self.delete(id: id )
-                       
-                    }
-                   
-                    example.product.remove(atOffsets: indexSet)
+                        viewModel.product.remove(atOffsets: indexSet)
+                      
+                    })
+                    .deleteDisabled(editMode?.wrappedValue != .active)
+                    
+                }.onAppear(perform: {
+                    let userID = authViewModel.getCurrentUser()
+                                        
+                                          print("userID \(userID)")
+                                          viewModel.subscribe(uid: userID)
                   
                 })
                 
                 
-            }.onAppear(perform: {
-             
-                example.subscribe()
-                
-              
-            })
-            
-            
-            .listStyle(SidebarListStyle())
+                .listStyle(SidebarListStyle())
 
-              
+                HStack {
+                    Spacer()
+                    VStack{
+                        
+                        
+                        EditButton()
+                            .foregroundColor(.white)
+                        
+                        
+               
+                     
+                      
+                            .frame(width: 145, height: 40)
+                            .background(Color(red: 0.467, green: 0.482, blue: 1))
+                            .cornerRadius(4)
+                        
+                        
+                    }.padding()
+                        
+                }
+                   
+                
+                
+            }
+            
+            
+            if viewModel.product.count == 0{
+                EmptyListView()
+                
+            }
         }
     }
     
@@ -170,19 +199,19 @@ struct ListView: View {
     }
     
     func updateFilterByAscendingOrder() {
-        example.product = example.product.sorted(by: { $0.qy > $1.qy})
+        viewModel.product = viewModel.product.sorted(by: { $0.qy > $1.qy})
 
      }
 
     func updateFilterByDescendingOrder() {
-        example.product = example.product.sorted(by: { $0.qy < $1.qy })
+        viewModel.product = viewModel.product.sorted(by: { $0.qy < $1.qy })
      }
     func updateFilterByAscendingOrderToDate() {
         let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            example.product = example.product
+        viewModel.product = viewModel.product
               .map { return ($0, dateFormatter.date(from: $0.expdate) ?? Date() ) }
               .sorted { $1.1 > $0.1}
               .map(\.0)
@@ -243,7 +272,7 @@ struct RowView: View {
                             .foregroundColor(.primary)
                         Image("green")
                         
-                    }else if Int((product.qy)) == product.remainingQuantityAlert {
+                    }else if Int((product.qy)) <=  product.remainingQuantityAlert  {
                         Text("\(product.qy, specifier: "%.0f")")
                             .padding(3)
                             .foregroundColor(.primary)
@@ -258,8 +287,10 @@ struct RowView: View {
                
                 
                 Text(product.ProductCategory.localized)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(2)
                     .foregroundColor(.primary)
-                    .frame(width: UIScreen.main.bounds.width * 0.14, height: 30)
+                    .frame(width: UIScreen.main.bounds.width * 0.14, height: UIScreen.main.bounds.height * 0.01)
             }
             
             HStack {
@@ -278,10 +309,28 @@ struct RowView: View {
                        
                         self.showingFull = true
                     }.sheet(isPresented: $showingFull){
-                       
-                    
-                        EditProductInfoPage(viewModel: ProdctViewModel(product: product))
                         
+                        ZStack{
+                            Color(red: 0.949, green: 0.949, blue: 0.971 )
+                                .ignoresSafeArea()
+                          
+                        ZStack{
+                          
+//                        
+                            VStack{
+                                
+                                
+                                EditProductInfoPage(viewModel: ProdctViewModel(product: product))
+                                
+                                
+                            }
+                           
+                            .padding([.leading, .trailing], 25)
+                               
+                            
+                        }
+                    }
+                         
                     }
                     
                     
@@ -289,9 +338,6 @@ struct RowView: View {
             }.frame(width: UIScreen.main.bounds.width * 0.10, height: 30)
             
             
-        }.onAppear {
-            productViewModel.notificationQy(product)
-           
         }
     }
     
@@ -299,3 +345,10 @@ struct RowView: View {
     
     
 }
+
+
+
+
+
+
+

@@ -41,7 +41,7 @@ class OrderViewModel: ObservableObject {
                                                   expdate: document["expdate"] as? String ?? "" ,
                                                   ProductCategory: document["ProductCategory"] as? String ?? "",
                                                   productDiscription: document["productDiscription"] as? String ?? "",
-                                                  batches: document["batches"] as? Array<String> ?? [String]()
+                                                  batches: document["batches"] as? Array<String> ?? [String](), uid: ""
                             )
                             
                             let newValue = product.qy - 1

@@ -34,23 +34,24 @@ struct Home: View{
                 HStack(spacing: 0){
                     SideBar(selectedTab: $selectedTab)
                     switch(selectedTab){
+                        
                     case "Checkout":
-                        OrderView()
+                        CheckOutView()
                     case "Online Order":
-                        onlineOrders()
+                        OnlineOrderView()
                     case "Stock":
                         StockView()
                     case "Add Product":
                         AddNewProduct()
                         
-                    default: OrderView()
+                    default: CheckOutView()
                     }
                     
                     
                 }
                     
                
-            }
+            } .background(Color.white)
                 
            
 }
@@ -69,7 +70,7 @@ struct SideBar: View{
         
       
                 
-        ScrollView  {
+        ScrollView(.vertical, showsIndicators: false)  {
             VStack {
                 ZStack {
                      VStack(alignment: .center){
@@ -93,6 +94,7 @@ struct SideBar: View{
 struct InsideTabBarItems: View{
 
     @Binding var selectedTab: String
+    @EnvironmentObject var authViewModel: AuthViewModel
   
     var body: some View{
     
@@ -100,7 +102,8 @@ struct InsideTabBarItems: View{
                 Image("Untitled design-4 (1)")
                     .resizable()
                     
-                    .frame(width: 130, height: 130)
+                  
+                    .frame(width: UIScreen.main.bounds.width * 0.13, height: UIScreen.main.bounds.height * 0.18)
                     .padding(.horizontal)
                 Spacer()
 
@@ -108,9 +111,15 @@ struct InsideTabBarItems: View{
 
                    
                     TabBarButton(image:("Checkout") , title: "Checkout", selectedTab: $selectedTab)
+                        .frame(height: UIScreen.main.bounds.height * 0.08)
                     TabBarButton(image:("OnlineOrders"), title: "Online Order", selectedTab: $selectedTab)
+                        .frame(height: UIScreen.main.bounds.height * 0.08)
+
                     TabBarButton(image: ("Stock"), title: "Stock", selectedTab: $selectedTab)
+                        .frame(height: UIScreen.main.bounds.height * 0.08)
+                     
                     TabBarButton(image: ("Add"), title: "Add Product", selectedTab: $selectedTab)
+                        .frame(height: UIScreen.main.bounds.height * 0.08)
                     
 
                 }
@@ -118,23 +127,57 @@ struct InsideTabBarItems: View{
                 Spacer()
 
                 VStack{
-                    Image("worker")
+                    Image("blank-profile-picture-973460_640-modified")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 65, height: 65)
-                        .padding(.horizontal)
+                        .frame(width: UIScreen.main.bounds.width * 0.06, height: UIScreen.main.bounds.height * 0.07)
+                        .padding(.trailing, 14)
                         .padding(.top, 45)
-                        .padding(.bottom, 5)
+                      
 
                     HStack{
-                    Text("Sami")
-                        .font(.system(size: 15))
-                        .foregroundColor(Color(red: 0.047, green: 0.0, blue: 0.0))
-                        .bold()
+                  
 
-                        Image(systemName: "chevron.down")
-                            .resizable()
-                            .frame(width: 8, height: 4)
+                        HStack {
+                            HStack {
+                                Menu {
+                                    Button("Sign Out", role: .destructive){
+                                        
+                                        authViewModel.logout()
+                                     
+                                        
+                                    }
+
+                                } label: {
+                                    
+                                    
+                                    HStack{
+                                        Text("Sami")
+                                                .font(.subheadline)
+                                            .foregroundColor(Color(red: 0.047, green: 0.0, blue: 0.0))
+                                            .bold()
+                                        Image(systemName: "chevron.down")
+                                          
+                                           
+                                            .resizable()
+                                           
+                                            .font(Font.title.weight(.bold))
+                                            .foregroundColor(.init(UIColor(red: 0.367, green: 0.381, blue: 0.863, alpha: 1)))
+                                          
+                                        .frame(width: 17, height: 9)
+                                        
+                                        
+                                    }.frame(width: 130, height: 60)
+                                  
+                                    
+                                }
+
+                              
+                            }
+                            
+                            
+                            
+                        }
                     }
                     
                 } .padding()
@@ -189,8 +232,7 @@ struct TabBarButton: View{
 
                             HStack {
                                 RoundedRectangle(cornerRadius: 15)
-                                    .frame(width: 4, height: 80)
-                                
+                                    .frame(width: 4, height: UIScreen.main.bounds.height * 0.10)
                                 .foregroundColor(Color("Color-3"))
                             
                              

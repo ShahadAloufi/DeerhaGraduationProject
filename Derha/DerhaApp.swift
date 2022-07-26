@@ -9,23 +9,37 @@ import SwiftUI
 import Firebase
 @main
 struct AJApp: App {
-    init(){
-        FirebaseApp.configure()
-    }
-    
+  
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+   
     var body: some Scene {
+        let authViewModel = AuthViewModel()
+    
         WindowGroup {
-            TabView()
+            MainView()
+               
+                .environmentObject(authViewModel)
+              
                 .environment(\.colorScheme, .light)
+                
+                
             
         }
+        
+        
+    }
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return AppDelegate.orientationLock
     }
 }
-class AppDelegate: NSObject,UIApplicationDelegate{
-     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-         
-        FirebaseApp.configure()
-        return true
-    }
+
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    static var orientationLock = UIInterfaceOrientationMask.landscape
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
+    
+  
 }

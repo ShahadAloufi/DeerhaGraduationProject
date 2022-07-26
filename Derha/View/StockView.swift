@@ -39,19 +39,7 @@ struct StockView: View {
                         
                         ListView(SearchText: $SearchText)
                         
-                        VStack{
-                            EditButton().foregroundColor(.white)
-                            
-                            
-                         
-                         
-                          
-                                .frame(width: 145, height: 35)
-                                .background(Color(red: 0.467, green: 0.482, blue: 1))
-                                .cornerRadius(4)
-                        }  .padding(.leading, 810)
-                            .padding(.vertical, 16)
-                           
+                     
                     }
                     
                     
@@ -66,7 +54,7 @@ struct StockView: View {
                 
                 
             }.padding([.leading, .trailing], 16)
-              
+                .preferredColorScheme(.light)
             
             
                 .ignoresSafeArea(.keyboard, edges: .bottom)

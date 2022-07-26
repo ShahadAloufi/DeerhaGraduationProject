@@ -10,7 +10,6 @@ import Foundation
 import FirebaseFirestore
 import Combine
 import SwiftUI
-import UserNotifications
 class ProdctViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
@@ -18,7 +17,7 @@ class ProdctViewModel: ObservableObject {
     @Published var product: Product
     @Published var modified = false
   
-    init(product: Product = Product(barcodeNumber: "", arabicProductName: "", englishProductName: "", qy: 0.0, remainingQuantityAlert: 0, price: 0.0, unit: "", expdate: "", ProductCategory: "", productDiscription: "", batches: [String]())) {
+    init(product: Product = Product(barcodeNumber: "", arabicProductName: "", englishProductName: "", qy: 0.0, remainingQuantityAlert: 0, price: 0.0, unit: "", expdate: "", ProductCategory: "", productDiscription: "", batches: [String](), uid: "")) {
         self.product = product
       
     
@@ -75,9 +74,8 @@ class ProdctViewModel: ObservableObject {
 
     func handleDoneTapped() {
         self.updateOrAddProduct()
-        self.product.batches.append(product.expdate)
-        self.product.batches.append("\(product.qy)")
-        print(product)
+      
+     
         
       }
        
@@ -107,7 +105,22 @@ class ProductsViewModel: ObservableObject {
       listenerRegistration = nil
     }
   }
-   
+    func subscribe(uid: String) {
+
+                if listenerRegistration == nil {
+                    listenerRegistration = db.collection("Product").whereField("uid", isEqualTo: uid).addSnapshotListener { (querySnapshot, error) in
+                        guard let documents = querySnapshot?.documents else {
+                            print("No documents")
+                            return
+                        }
+
+                        self.product = documents.compactMap { queryDocumentSnapshot in
+                            try? queryDocumentSnapshot.data(as: Product.self)
+
+                        }
+                    }
+                }
+            }
    
   func subscribe() {
     if listenerRegistration == nil {
@@ -138,82 +151,6 @@ class ProductsViewModel: ObservableObject {
       }
     }
   }
-    
-    func notificationQy(_ product: Product) {
-        if product.id != nil {
-          do {
-              if product.qy == Double(product.remainingQuantityAlert){
-                  UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                      if success {
-                          let content = UNMutableNotificationContent()
-                          content.title = "Product Out of Stock"
-                          content.subtitle = "Your product \(product.englishProductName) is about to be out of stock"
-                          content.sound = UNNotificationSound.default
-                          // show this notification five seconds from now
-                          let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-                          // choose a random identifier
-                          let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-                          // add our notification request
-                          UNUserNotificationCenter.current().add(request)
-                      } else if let error = error {
-                          print(error.localizedDescription)
-                      }
-                  }
-                  
-              }
-             
-              
-              
-          }
-         
-        }
-    }
-    
-    func notificationExpDate(_ product: Product){
-        if product.id != nil {
-          do {
-            
-                 
-                  let date = Date.now
-                  let dateFormatter = DateFormatter()
-                  dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                  dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-                  dateFormatter.dateFormat = "yyyy-MM-dd"
-                  dateFormatter.string(from: date)
-                  if product.expdate <= ("\(date)") {
-                      UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                          if success {
-                              let content = UNMutableNotificationContent()
-                              content.title = "Product Expired"
-                              content.subtitle = "Your product \(product.englishProductName) has just expired"
-                              content.sound = UNNotificationSound.default
-                              // show this notification five seconds from now
-                              let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-                              // choose a random identifier
-                              let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-                              // add our notification request
-                              UNUserNotificationCenter.current().add(request)
-                          } else if let error = error {
-                              print(error.localizedDescription)
-                          }
-                      }
-                  
-              }
-             
-              
-              
-          
-         
-        }
-        
-    }
-
-    }
-    
     
 }
 

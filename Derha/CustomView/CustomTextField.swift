@@ -8,43 +8,136 @@
 import SwiftUI
 
 struct CustomTextField: View {
+    @Binding var isCorrect: Bool
     @Binding var text :String
+    var placeHolder: String
+    var warningMesssage = ""
    let titel :Text
     var body: some View {
         VStack (alignment:.leading){
-           titel
-           
-            TextField("", text: $text)
+            HStack{
+               
+                titel
+                Text("*")
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .bold()
+               
+               
+            }
+            ZStack{
+                if isCorrect {
+            RoundedRectangle(cornerRadius: 11)
+                .stroke( Color.red, lineWidth: 1)
+                .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
+                }
+                TextField(placeHolder.localized, text: $text)
                .padding()
-               .frame(width: 360, height: 45.0)
+               .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
                .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
-              .cornerRadius(11)
-        } .padding([.leading,.trailing],50)
+               .cornerRadius(11)
+            }
+        }
+        
     }
 }
+
+
+struct CustomTextFields: View {
+    @Binding var isCorrect: Bool
+    @Binding var text :String
+    var placeHolder: String
+    var warningMesssage = ""
+   let titel :Text
+    var body: some View {
+        VStack (alignment:.leading){
+                titel
+         
+            ZStack{
+                if isCorrect {
+            RoundedRectangle(cornerRadius: 11)
+                .stroke( Color.red, lineWidth: 1)
+                .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
+                }
+                TextField(placeHolder.localized, text: $text)
+               .padding()
+               .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
+               .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
+               .cornerRadius(11)
+            }
+        }
+        
+    }
+}
+
+
+struct CustomTextFieldForBarcode: View {
+    @Binding var isCorrect: Bool
+    @Binding var textValue :String
+    var placeHolder: String
+    var warningMesssage = ""
+   let titel :Text
+    var body: some View {
+        VStack (alignment:.leading){
+                titel
+         
+            ZStack{
+                if isCorrect {
+            RoundedRectangle(cornerRadius: 11)
+                .stroke( Color.red, lineWidth: 1)
+                .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
+                }
+                TextField(placeHolder.localized, text: $textValue)
+               .padding()
+               .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
+               .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
+               .cornerRadius(11)
+            }
+        }
+        
+    }
+}
+
 struct CustomTextFieldForNumbers: View {
+    @Binding var isCorrect: Bool
     @Binding var text :Double
+    var placeHolder: String
     var formattedLucNumber : String {
         Formatter.lucNumberFormat.string(from: NSNumber(value: text))!
         }
    let titel :Text
     var formatter = NumberFormatter()
    
+   
     var body: some View {
         VStack (alignment:.leading){
+            HStack{
            titel
-           
-            TextField("", value: $text, formatter: Formatter.lucNumberFormat)
+                Text("*")
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .bold()
+            }
+            ZStack{
+            if isCorrect {
+        RoundedRectangle(cornerRadius: 11)
+            .stroke( Color.red, lineWidth: 1)
+            .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
+            }
+            TextField(placeHolder, value: $text, formatter: Formatter.lucNumberFormat)
             
                .padding()
-               .frame(width: 360, height: 45.0)
+               .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
                .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
               .cornerRadius(11)
-        } .padding([.leading,.trailing],50)
+            }
+        }
     }
 }
 struct CustomTextFieldForNumber: View {
+    @Binding var isCorrect: Bool
     @Binding var text :Int
+    var placeHolder: String
     
     var formattedLucNumber : String {
         Formatter.lucNumberFormat.string(from: NSNumber(value: text))!
@@ -52,14 +145,26 @@ struct CustomTextFieldForNumber: View {
    let titel :Text
     var body: some View {
         VStack (alignment:.leading){
+            HStack{
            titel
-           
-            TextField("", value: $text,  formatter: Formatter.lucNumberFormat)
+                Text("*")
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .bold()
+            }
+            ZStack{
+            if isCorrect {
+        RoundedRectangle(cornerRadius: 11)
+            .stroke( Color.red, lineWidth: 1)
+            .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
+            }
+            TextField(placeHolder, value: $text,  formatter: Formatter.lucNumberFormat)
                .padding()
-               .frame(width: 360, height: 45.0)
+               .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
                .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
               .cornerRadius(11)
-        } .padding([.leading,.trailing],50)
+            }
+        }
     }
 }
 
@@ -69,6 +174,7 @@ struct CustomTextFieldForDate: View {
     @Binding var date :Date
     @State private var showPicker: Bool = false
     @Binding var selectedDateText:String
+    var placeHolder: String
 
      private var selectedDate: Binding<Date> {
        Binding<Date>(get: { self.date}, set : {
@@ -88,14 +194,26 @@ struct CustomTextFieldForDate: View {
     
     
    let titel :Text
+    @Binding var isCorrect: Bool
+  
     var body: some View {
         VStack (alignment:.leading){
-           
-           titel
-            
-            
+            HStack{
+                
+                titel
+                Text("*")
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .bold()
+            }
             HStack {
-                TextField("", text: $selectedDateText)
+                ZStack{
+                    if isCorrect {
+                RoundedRectangle(cornerRadius: 11)
+                    .stroke( Color.red, lineWidth: 1)
+                    .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
+                    }
+                TextField(placeHolder, text: $selectedDateText)
                     .onAppear() {
                         self.setDateString()
                     }.overlay(
@@ -107,19 +225,19 @@ struct CustomTextFieldForDate: View {
                         
                         }
                     )
-                   .padding(9)
-                   .frame(width: 360, height: 45.0)
+                   .padding()
+                   .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
                    .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
                
                   .cornerRadius(11)
-              
+            }
             }
             
              
-        } .padding([.leading,.trailing],60)
+        }
+
     }
 }
-
 struct CustomTextFieldForDates: View {
     
     @Binding var date :Date
@@ -160,22 +278,26 @@ struct CustomTextFieldForDates: View {
                             
                            
                             DatePicker("", selection: selectedDate, in: Date()...
-                        ,displayedComponents: .date)
+                        ,displayedComponents: .date).preferredColorScheme(.light)
                         
-                        }
+                        }.preferredColorScheme(.light)
                     )
                    .padding(9)
-                   .frame(width: 289, height: 42.0)
+                   .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
                    .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
                
                   .cornerRadius(11)
               
-            }
+            }.preferredColorScheme(.light)
             
              
         } .padding([.leading,.trailing],60)
     }
 }
+
+
+
+
 
 struct CustomTextFieldForNumbersBatches: View {
     @Binding var text :Double
@@ -189,7 +311,7 @@ struct CustomTextFieldForNumbersBatches: View {
            
             TextField("", value: $text,  formatter: Formatter.lucNumberFormat ).padding()
               
-               .frame(width: 289, height: 42.0)
+                .frame(width: UIScreen.main.bounds.width * 0.22, height: UIScreen.main.bounds.height * 0.05)
                .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
               .cornerRadius(11)
         } 
@@ -218,7 +340,7 @@ struct CustomTextFieldForDatesBatches: View {
                 TextField("", text: $selectedDateText).padding()
 
                   
-                   .frame(width: 289, height: 42.0)
+                    .frame(width: UIScreen.main.bounds.width * 0.22, height: UIScreen.main.bounds.height * 0.05)
                    .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
                
                   .cornerRadius(11)

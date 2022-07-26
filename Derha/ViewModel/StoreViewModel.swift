@@ -8,8 +8,6 @@
 import Foundation
 import Firebase
 
-
-
 class StoreViewModel : ObservableObject{
     
     func fetchStoreInfo(completion:@escaping((Store)->())){

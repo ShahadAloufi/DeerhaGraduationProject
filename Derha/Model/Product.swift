@@ -21,6 +21,7 @@ struct Product: Identifiable, Hashable, Codable {
     var ProductCategory : String
     var productDiscription: String
     var batches: Array <String>
+    var uid: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -35,7 +36,7 @@ struct Product: Identifiable, Hashable, Codable {
         case ProductCategory
         case productDiscription
         case batches
-        
+        case uid
         
       }
 }

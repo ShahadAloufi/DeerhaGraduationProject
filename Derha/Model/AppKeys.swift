@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+enum AppKeys: String, CaseIterable {
+    case userId = "userId"
+}

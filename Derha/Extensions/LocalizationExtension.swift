@@ -24,11 +24,6 @@ extension String {
             return translatedString
         #endif
 
-        guard Locale.current.languageCode == "en" else {
-            return translatedString
-        }
-
-  
 
         return translatedString
     }

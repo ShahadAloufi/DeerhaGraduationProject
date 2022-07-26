@@ -17,23 +17,39 @@ struct CustomAlert: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
             VStack {
-                TextFieldView(text: $total, placeholder: "Total".localized, KeyboardType: .numberPad)
-                    .padding()
-                
-                
-                TextFieldView(text: $receivedAmount, placeholder: "Received Amount".localized, KeyboardType: .numberPad)
-                    .padding()
-                
-                
-                TextFieldView(text: $leftAmount, placeholder: "Left".localized, KeyboardType: .numberPad)
-                    .padding()
-            
+                TextField("Total", text: $total)
+                   .padding()
+                   
+                   .frame(width: 360, height: 55.0)
+                   .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
+                  
+                  .cornerRadius(11)
+                  .padding(.bottom, 10)
+                TextField("Received Amount", text: $receivedAmount)
+                   .padding()
+                   
+                   .frame(width: 360, height: 55.0)
+                   .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
+                  
+                  .cornerRadius(11)
+                  .padding(.bottom, 10)
+                TextField("Left", text: $leftAmount)
+                   .padding()
+                   
+                   .frame(width: 360, height: 55.0)
+                   .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
+                  
+                  .cornerRadius(11)
+                  .padding(.bottom, 10)
+                 
                 HStack {
                   
                     
                     Button(action: {
-                      
-                        self.showingAlert.toggle()
+                        withAnimation {
+                            self.showingAlert.toggle()
+                        }
+                       
                     }) {
                         Text("Add".localized)
                             .font(.system(size: 20))
@@ -47,15 +63,14 @@ struct CustomAlert: View {
                     .background(Color("Checkout"))
                     .cornerRadius(10)
                     
-                    Button("Add") {
-                        self.showingAlert.toggle()
-                    }
                 }
                 .padding(20)
                 .padding(.horizontal, 30)
             }
+            
+            
         }
-        .frame(width: 300, height: 250)
+        .frame(width: 400, height: 340)
     }
 }
 

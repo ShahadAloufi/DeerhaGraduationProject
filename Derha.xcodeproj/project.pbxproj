@@ -7,25 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7731112E287DAD890077EE90 /* OnlineOrdersForDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7731112D287DAD890077EE90 /* OnlineOrdersForDemo.swift */; };
-		776518D0286B1F3B0063197A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 776518CF286B1F3B0063197A /* FirebaseDatabase */; };
-		776518D2286B1F3B0063197A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 776518D1286B1F3B0063197A /* FirebaseFirestore */; };
-		776518D5286B21240063197A /* Printer in Frameworks */ = {isa = PBXBuildFile; productRef = 776518D4286B21240063197A /* Printer */; };
+		7712D6B7288957E5007D14A8 /* DeleteBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712D6B6288957E5007D14A8 /* DeleteBatch.swift */; };
+		77185641287F160C00FCCC21 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77185640287F160C00FCCC21 /* MainView.swift */; };
+		774E6E49287E0A7D0060AA44 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E6E48287E0A7D0060AA44 /* LogInView.swift */; };
+		7754973128806B5700475397 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7754973028806B5700475397 /* EmptyListView.swift */; };
+		775497332880944D00475397 /* TableNewProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775497322880944D00475397 /* TableNewProductView.swift */; };
+		776518D0286B1F3B0063197A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 776518CF286B1F3B0063197A /* FirebaseDatabase */; settings = {ATTRIBUTES = (Weak, ); }; };
+		776518D2286B1F3B0063197A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 776518D1286B1F3B0063197A /* FirebaseFirestore */; settings = {ATTRIBUTES = (Weak, ); }; };
+		776518D5286B21240063197A /* Printer in Frameworks */ = {isa = PBXBuildFile; productRef = 776518D4286B21240063197A /* Printer */; settings = {ATTRIBUTES = (Weak, ); }; };
 		776518D7286B361B0063197A /* OnlineOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776518D6286B361B0063197A /* OnlineOrders.swift */; };
+		77A4AF7B288AB9E8004F00B7 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A4AF7A288AB9E8004F00B7 /* AddView.swift */; };
 		77E03A7D28795C5300EFC57C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77E03A7F28795C5300EFC57C /* Localizable.strings */; };
 		77E03A85287B2E9E00EFC57C /* LocalizationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E03A84287B2E9E00EFC57C /* LocalizationExtension.swift */; };
-		77E03A88287B54B000EFC57C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 77E03A87287B54B000EFC57C /* FirebaseFirestoreSwift */; };
+		77E03A88287B54B000EFC57C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 77E03A87287B54B000EFC57C /* FirebaseFirestoreSwift */; settings = {ATTRIBUTES = (Weak, ); }; };
 		77E03AA8287B998900EFC57C /* QRCaptureSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E03AA7287B998900EFC57C /* QRCaptureSessionView.swift */; };
 		77F8C75A287DB99B0078EACD /* NumbersFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F8C759287DB99B0078EACD /* NumbersFormatter.swift */; };
+		77FD71272887F86600C96088 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77FD71262887F86600C96088 /* GoogleService-Info.plist */; };
 		A6125B652868CA26001D6B37 /* Batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6125B642868CA26001D6B37 /* Batch.swift */; };
 		A645F7502875B0FE007D4A32 /* BatcheViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A645F74F2875B0FE007D4A32 /* BatcheViewModel.swift */; };
+		A68526EF287E302700DE6D59 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68526EE287E302700DE6D59 /* User.swift */; };
+		A68526F1287E309200DE6D59 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68526F0287E309200DE6D59 /* AuthViewModel.swift */; };
+		A68526F4287E311D00DE6D59 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A68526F3287E311D00DE6D59 /* FirebaseAuth */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A68526F6287E311D00DE6D59 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A68526F5287E311D00DE6D59 /* FirebaseAuthCombine-Community */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A68526FA287E365200DE6D59 /* AppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68526F9287E365200DE6D59 /* AppKeys.swift */; };
+		A6BF0A682881FCB500D29746 /* OrderSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BF0A672881FCB500D29746 /* OrderSearchView.swift */; };
+		A6BF0A6A2881FF4C00D29746 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BF0A692881FF4C00D29746 /* CameraView.swift */; };
 		EE0657692850A9D700E5C372 /* DerhaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0657682850A9D700E5C372 /* DerhaApp.swift */; };
 		EE06576D2850A9D700E5C372 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE06576C2850A9D700E5C372 /* Assets.xcassets */; };
 		EE0657702850A9D700E5C372 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE06576F2850A9D700E5C372 /* Preview Assets.xcassets */; };
-		EE1F9B482860EC4100788724 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE1F9B472860EC4100788724 /* GoogleService-Info.plist */; };
 		EE2245F82850D899008AE8C5 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2245F72850D899008AE8C5 /* CustomTextField.swift */; };
 		EE2245FE2850DBB6008AE8C5 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2245FD2850DBB6008AE8C5 /* ProductViewModel.swift */; };
-		EE2246002850F502008AE8C5 /* NewProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2245FF2850F502008AE8C5 /* NewProductView.swift */; };
 		EE38A1B52852026400BC9E7C /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A1B42852026400BC9E7C /* ClearButton.swift */; };
 		EE38A1B72852028A00BC9E7C /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE38A1B62852028A00BC9E7C /* AddButton.swift */; };
 		EEC903CC28645170007B666A /* StockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC903CB28645170007B666A /* StockView.swift */; };
@@ -54,24 +65,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7731112D287DAD890077EE90 /* OnlineOrdersForDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineOrdersForDemo.swift; sourceTree = "<group>"; };
+		7712D6B6288957E5007D14A8 /* DeleteBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBatch.swift; sourceTree = "<group>"; };
+		77185640287F160C00FCCC21 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		771BBC6D28831656001FF560 /* Derha.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Derha.entitlements; sourceTree = "<group>"; };
+		774E6E48287E0A7D0060AA44 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		7754973028806B5700475397 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		775497322880944D00475397 /* TableNewProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableNewProductView.swift; sourceTree = "<group>"; };
 		776518D6286B361B0063197A /* OnlineOrders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineOrders.swift; sourceTree = "<group>"; };
+		77A4AF7A288AB9E8004F00B7 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		77E03A8028795C5F00EFC57C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77E03A812879671D00EFC57C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77E03A83287999FC00EFC57C /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77E03A84287B2E9E00EFC57C /* LocalizationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationExtension.swift; sourceTree = "<group>"; };
 		77E03AA7287B998900EFC57C /* QRCaptureSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCaptureSessionView.swift; sourceTree = "<group>"; };
 		77F8C759287DB99B0078EACD /* NumbersFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersFormatter.swift; sourceTree = "<group>"; };
+		77FD71262887F86600C96088 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6125B642868CA26001D6B37 /* Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Batch.swift; sourceTree = "<group>"; };
 		A645F74F2875B0FE007D4A32 /* BatcheViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatcheViewModel.swift; sourceTree = "<group>"; };
+		A68526EE287E302700DE6D59 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A68526F0287E309200DE6D59 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		A68526F9287E365200DE6D59 /* AppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeys.swift; sourceTree = "<group>"; };
+		A6BF0A672881FCB500D29746 /* OrderSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSearchView.swift; sourceTree = "<group>"; };
+		A6BF0A692881FF4C00D29746 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		EE0657652850A9D700E5C372 /* Derha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Derha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0657682850A9D700E5C372 /* DerhaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerhaApp.swift; sourceTree = "<group>"; };
 		EE06576C2850A9D700E5C372 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE06576F2850A9D700E5C372 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		EE1F9B472860EC4100788724 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE2245F72850D899008AE8C5 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; usesTabs = 0; };
 		EE2245FD2850DBB6008AE8C5 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
-		EE2245FF2850F502008AE8C5 /* NewProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductView.swift; sourceTree = "<group>"; };
 		EE38A1B42852026400BC9E7C /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		EE38A1B62852028A00BC9E7C /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		EEC903CB28645170007B666A /* StockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockView.swift; sourceTree = "<group>"; };
@@ -105,6 +126,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				776518D5286B21240063197A /* Printer in Frameworks */,
+				A68526F6287E311D00DE6D59 /* FirebaseAuthCombine-Community in Frameworks */,
+				A68526F4287E311D00DE6D59 /* FirebaseAuth in Frameworks */,
 				776518D0286B1F3B0063197A /* FirebaseDatabase in Frameworks */,
 				776518D2286B1F3B0063197A /* FirebaseFirestore in Frameworks */,
 				77E03A88287B54B000EFC57C /* FirebaseFirestoreSwift in Frameworks */,
@@ -141,6 +164,8 @@
 		EE0657672850A9D700E5C372 /* Derha */ = {
 			isa = PBXGroup;
 			children = (
+				771BBC6D28831656001FF560 /* Derha.entitlements */,
+				77FD71262887F86600C96088 /* GoogleService-Info.plist */,
 				EE0657682850A9D700E5C372 /* DerhaApp.swift */,
 				77E03A7F28795C5300EFC57C /* Localizable.strings */,
 				EEC903D828646156007B666A /* Extensions */,
@@ -159,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				EE06576F2850A9D700E5C372 /* Preview Assets.xcassets */,
-				EE1F9B472860EC4100788724 /* GoogleService-Info.plist */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -169,10 +193,12 @@
 			children = (
 				EE2245FD2850DBB6008AE8C5 /* ProductViewModel.swift */,
 				77E03AA7287B998900EFC57C /* QRCaptureSessionView.swift */,
+				7712D6B6288957E5007D14A8 /* DeleteBatch.swift */,
 				EEC903E828646397007B666A /* OrderViewModel.swift */,
 				EEC903EA286463B0007B666A /* StoreViewModel.swift */,
 				EEC903EC286463D8007B666A /* PrintManager.swift */,
 				A645F74F2875B0FE007D4A32 /* BatcheViewModel.swift */,
+				A68526F0287E309200DE6D59 /* AuthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -188,6 +214,8 @@
 				EEC903F628646465007B666A /* PrinterSize.swift */,
 				EEC903F828646476007B666A /* QRManager.swift */,
 				A6125B642868CA26001D6B37 /* Batch.swift */,
+				A68526EE287E302700DE6D59 /* User.swift */,
+				A68526F9287E365200DE6D59 /* AppKeys.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,15 +224,20 @@
 			isa = PBXGroup;
 			children = (
 				EECEEED5285905FE00E09A69 /* AddNewProductView.swift */,
-				EE2245FF2850F502008AE8C5 /* NewProductView.swift */,
+				774E6E48287E0A7D0060AA44 /* LogInView.swift */,
+				775497322880944D00475397 /* TableNewProductView.swift */,
 				EED945CA2863AEAD00BD60EF /* TabView.swift */,
 				EEC903CB28645170007B666A /* StockView.swift */,
+				7754973028806B5700475397 /* EmptyListView.swift */,
+				77185640287F160C00FCCC21 /* MainView.swift */,
 				EEC903CD2864517B007B666A /* ListView.swift */,
 				EEC903CF28645204007B666A /* EditProductInfoPage.swift */,
 				776518D6286B361B0063197A /* OnlineOrders.swift */,
-				7731112D287DAD890077EE90 /* OnlineOrdersForDemo.swift */,
 				EEC903D128645227007B666A /* SearchView.swift */,
 				EEC903E628646352007B666A /* OrderView.swift */,
+				A6BF0A672881FCB500D29746 /* OrderSearchView.swift */,
+				77A4AF7A288AB9E8004F00B7 /* AddView.swift */,
+				A6BF0A692881FF4C00D29746 /* CameraView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -270,6 +303,8 @@
 				776518D1286B1F3B0063197A /* FirebaseFirestore */,
 				776518D4286B21240063197A /* Printer */,
 				77E03A87287B54B000EFC57C /* FirebaseFirestoreSwift */,
+				A68526F3287E311D00DE6D59 /* FirebaseAuth */,
+				A68526F5287E311D00DE6D59 /* FirebaseAuthCombine-Community */,
 			);
 			productName = AJ;
 			productReference = EE0657652850A9D700E5C372 /* Derha.app */;
@@ -304,6 +339,7 @@
 			packageReferences = (
 				776518CE286B1F3B0063197A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				776518D3286B21240063197A /* XCRemoteSwiftPackageReference "Printer" */,
+				A68526F2287E311D00DE6D59 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = EE0657662850A9D700E5C372 /* Products */;
 			projectDirPath = "";
@@ -320,9 +356,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE0657702850A9D700E5C372 /* Preview Assets.xcassets in Resources */,
+				77FD71272887F86600C96088 /* GoogleService-Info.plist in Resources */,
 				77E03A7D28795C5300EFC57C /* Localizable.strings in Resources */,
 				EE06576D2850A9D700E5C372 /* Assets.xcassets in Resources */,
-				EE1F9B482860EC4100788724 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,8 +369,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77185641287F160C00FCCC21 /* MainView.swift in Sources */,
 				EECEEED6285905FE00E09A69 /* AddNewProductView.swift in Sources */,
 				EEC903F12864641E007B666A /* OrderItems.swift in Sources */,
+				A6BF0A6A2881FF4C00D29746 /* CameraView.swift in Sources */,
 				EEC903E52864632D007B666A /* TextFieldView.swift in Sources */,
 				EEC903DE28646239007B666A /* Printer+Extensions.swift in Sources */,
 				EEC903EF28646408007B666A /* Order.swift in Sources */,
@@ -342,24 +380,31 @@
 				EEC903EB286463B0007B666A /* StoreViewModel.swift in Sources */,
 				EEC903E728646352007B666A /* OrderView.swift in Sources */,
 				EEC903F32864643C007B666A /* Invoice.swift in Sources */,
+				A68526FA287E365200DE6D59 /* AppKeys.swift in Sources */,
 				EEC903DA2864618C007B666A /* PreviewLayoutComponentModifier.swift in Sources */,
+				774E6E49287E0A7D0060AA44 /* LogInView.swift in Sources */,
 				EE0657692850A9D700E5C372 /* DerhaApp.swift in Sources */,
+				7754973128806B5700475397 /* EmptyListView.swift in Sources */,
 				EEC903D228645227007B666A /* SearchView.swift in Sources */,
-				7731112E287DAD890077EE90 /* OnlineOrdersForDemo.swift in Sources */,
 				EECE13F02854A3D800D2775E /* Product.swift in Sources */,
 				A645F7502875B0FE007D4A32 /* BatcheViewModel.swift in Sources */,
 				EEC903DC286461DF007B666A /* PrinterExtension.swift in Sources */,
 				EEC903E028646294007B666A /* PaymentSwiftUIView.swift in Sources */,
 				776518D7286B361B0063197A /* OnlineOrders.swift in Sources */,
+				A68526F1287E309200DE6D59 /* AuthViewModel.swift in Sources */,
 				EEC903F928646476007B666A /* QRManager.swift in Sources */,
+				7712D6B7288957E5007D14A8 /* DeleteBatch.swift in Sources */,
 				77E03AA8287B998900EFC57C /* QRCaptureSessionView.swift in Sources */,
 				77F8C75A287DB99B0078EACD /* NumbersFormatter.swift in Sources */,
 				EE2245FE2850DBB6008AE8C5 /* ProductViewModel.swift in Sources */,
 				EEC903F728646465007B666A /* PrinterSize.swift in Sources */,
 				EE2245F82850D899008AE8C5 /* CustomTextField.swift in Sources */,
+				A68526EF287E302700DE6D59 /* User.swift in Sources */,
+				A6BF0A682881FCB500D29746 /* OrderSearchView.swift in Sources */,
 				EEC903E3286462F9007B666A /* PopUpView.swift in Sources */,
-				EE2246002850F502008AE8C5 /* NewProductView.swift in Sources */,
 				EEC903CE2864517B007B666A /* ListView.swift in Sources */,
+				775497332880944D00475397 /* TableNewProductView.swift in Sources */,
+				77A4AF7B288AB9E8004F00B7 /* AddView.swift in Sources */,
 				EE38A1B52852026400BC9E7C /* ClearButton.swift in Sources */,
 				EEC903D028645204007B666A /* EditProductInfoPage.swift in Sources */,
 				EEC903ED286463D8007B666A /* PrintManager.swift in Sources */,
@@ -486,6 +531,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -497,7 +543,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -507,29 +553,33 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Derha/Derha.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Derha/Preview Content\"";
-				DEVELOPMENT_TEAM = V75P7527TN;
+				DEVELOPMENT_TEAM = D86LN72L7X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Derha/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Deerha POS";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = printer;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to scan barcode number";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sa.areej.AJ;
+				MARKETING_VERSION = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inffe.team;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -538,29 +588,33 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Derha/Derha.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Derha/Preview Content\"";
-				DEVELOPMENT_TEAM = V75P7527TN;
+				DEVELOPMENT_TEAM = D86LN72L7X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Derha/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Deerha POS";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = printer;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to scan barcode number";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sa.areej.AJ;
+				MARKETING_VERSION = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inffe.team;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -604,6 +658,14 @@
 				kind = branch;
 			};
 		};
+		A68526F2287E311D00DE6D59 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -626,6 +688,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 776518CE286B1F3B0063197A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		A68526F3287E311D00DE6D59 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 776518CE286B1F3B0063197A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		A68526F5287E311D00DE6D59 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 776518CE286B1F3B0063197A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

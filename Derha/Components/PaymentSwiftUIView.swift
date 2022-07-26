@@ -31,7 +31,7 @@ struct CustomButton: View {
                     .padding(.leading, -30)
             }
         }
-        .frame(width: 199, height: 11.77)
+        .frame(width: UIScreen.main.bounds.width * 0.18, height:  UIScreen.main.bounds.height * 0.01, alignment: .center)
         .padding(.all, 20)
         .background(Color("ButtonColor"))
         .cornerRadius(10)

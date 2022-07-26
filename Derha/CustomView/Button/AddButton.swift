@@ -13,7 +13,7 @@ struct AddButton: View {
         Text(title)
         .font(.title3)
         .fontWeight(.semibold)
-        .frame(width: 150.72, height: 40)
+        .frame(width: UIScreen.main.bounds.width * 0.14, height: UIScreen.main.bounds.height * 0.05)
         .background(Color(red: 0.463, green: 0.483, blue: 1.034))
         .foregroundColor(.white)
         .cornerRadius(6)

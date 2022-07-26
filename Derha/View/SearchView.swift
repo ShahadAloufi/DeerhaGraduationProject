@@ -16,7 +16,8 @@ struct SearchView: View {
                 TextField(" Scan barcode number here".localized, text: $SearchText)
                     .padding(15)
                     .padding(.horizontal, 25)
-                    .frame(width: 620, height: 35)
+                    .frame(width: 620, height: 40)
+                   
                     .background(Color(.white))
                     .cornerRadius(8)
                     .overlay(

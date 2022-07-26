@@ -110,7 +110,7 @@ class BatchViewModel : ObservableObject{
                                           expdate: doc["expdate"] as? String ?? "",
                                           ProductCategory: doc["ProductCategory"] as? String ?? "",
                                           productDiscription: doc["productDiscription"] as? String ?? "",
-                                          batches: doc["batches"] as? Array<String> ?? [String]()
+                                          batches: doc["batches"] as? Array<String> ?? [String](), uid: ""
                     )
                     
                     for producBatche in product.batches{
@@ -154,7 +154,35 @@ class BatchViewModel : ObservableObject{
         }
     }
 
-    
+    func deleteBatch (product: Product, batche: Batche) {
+            DispatchQueue.main.async {
+            let db = Firestore.firestore()
+
+                db.collection("Batch").whereField("id", isEqualTo: batche.id).getDocuments { (snap , err ) in
+                if err != nil{
+                    print("Error")
+                    return
+                }
+                for document in snap!.documents{
+
+                    document.reference.delete()
+
+                }
+            }
+         }
+        }
+
+
+        func removeBatcheFromProduct (productToUpdate: Product, batche: Batche){
+
+            if productToUpdate.id != nil {
+                do {
+                    db.collection("Product").document(productToUpdate.id ?? "").updateData([
+                        "batches": FieldValue.arrayRemove([batche.id])])
+
+                }
+            }
+        }
     
     func checkDate(batche: Batche, product: Product){
         let date = Date()
@@ -258,10 +286,10 @@ class BatchViewModel : ObservableObject{
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        batches
-            .map { return ($0, dateFormatter.date(from: $0.expirationDate) ?? Date() ) }
-            .sorted { $1.1 > $0.1}
-            .map(\.0)
+        //batches
+           // .map { return ($0, dateFormatter.date(from: $0.expirationDate) ?? Date() ) }
+//            .sorted { $1.1 > $0.1}
+           
     }
     
     

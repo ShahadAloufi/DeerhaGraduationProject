@@ -82,4 +82,22 @@
 "Deli" = "الأطعمة الجاهزة";
 "Fruits" = "الفواكهة";
 "BatchFor" = "دفعة رقم للمنتج";
-
+"You still have not added any products yet" = "لم تقم بإضافة أي منتجات بعد";
+" Search order number here" = "ابحث برقم الطلب هنا";
+"You still have not received any orders yet" = "لم تصلك أي طلبات اونلاين بعد";
+"Sign Out" = "تسجيل خروج";
+"Sign In" = "تسجيل دخول";
+" Username" = "اسم المستخدم";
+" Password" = "كلمة المرور";
+"Don't have an account?" = "ليس لديك حساب؟";
+"Contact us to create one" = "تواصل معنا لإنشاء حساب جديد";
+"Ex: Drinks" = "مثل: مشروبات";
+"Ex: حليب" = "مثل: حليب ";
+"Ex: Milk" = "مثل: Milk";
+"Ex: Powder milk" = "مثل: حليب بودرة";
+"Ex: 123456789023" = "مثل: ١٢٣٤٥٦٧٨٩٠٢٣";
+"Ex: 12Kg" = "مثل: ١٢ كجم";
+"Ex: 20" = "مثل: ٢٠";
+"Ex: 10" = "مثل: ١٠";
+"Ex: 40 SAR" = "مثل: ٤٠ ريال سعودي";
+"Successfully Added" = "تمت الإضافة بنجاح";

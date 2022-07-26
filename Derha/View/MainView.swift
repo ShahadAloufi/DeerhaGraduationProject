@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            if authViewModel.signedIn{
+                
+                TabView()
+            }else{
+                LogInView()
+            }
+        }
+        .onAppear {
+            authViewModel.signedIn = authViewModel.isSignedIn
+        }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }
