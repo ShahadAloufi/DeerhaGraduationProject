@@ -36,7 +36,7 @@ struct CheckOutView: View {
             orderViewModel.fictchItem(ItemId: scannedCode)
             
             
-        }), scanError: $scanError.didSet(execute: { errorMessage in
+        }), scanError: $scanError.didSet(execute: { errorMessage  in
             
             self.scanErrorMessage(errorMessage)
             
