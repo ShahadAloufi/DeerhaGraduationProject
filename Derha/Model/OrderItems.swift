@@ -7,11 +7,12 @@
 
 import Foundation
 class OrderItem: Identifiable, ObservableObject {
+    
     @Published var  id: String
-    @Published var  itemNameAR: String
-    @Published var  itemNameEng: String
+    @Published var itemNameAR: String
+    @Published var itemNameEng: String
     @Published var productId: String
-    @Published var quantity: Double = 1
+    @Published var quantity: Double = 0.0
     @Published var priceForEachItem: Double = 0.0
     
     

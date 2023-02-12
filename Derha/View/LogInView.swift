@@ -13,100 +13,97 @@ struct LogInView: View {
     @State var username = ""
     @State var password = ""
     @State var isLoading = false
+    @State var isUserExist: Bool = false
     @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         
-        
-        VStack{
+        NavigationView {
+            VStack{
                 VStack {
                     ZStack {
                         Color(  red: 0.949, green: 0.949, blue: 0.971 )
                             .ignoresSafeArea()
                         ScrollView {
                             VStack {
-                                Image("Untitled design-4 (1)")
+                                Image("LOGO1")
                                     .resizable()
-                                    .frame(width: 210, height: 210)
-                               
-                                TextField(" Username", text: $username)
-                                   .padding()
-                                   
-                                   .frame(width: 460, height: 65.0)
-                                   .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
-                                   .opacity(0.9)
-                                  .cornerRadius(11)
-                                   
-                                SecureInputView(" Password".localized, text: $password)
-                                   .padding()
-                                   .frame(width: 460, height: 65.0)
-                                   .background(Color(red: 0.968, green: 0.973, blue: 0.981 ))
-                                  .cornerRadius(11)
-                                  .padding(13)
-                                  .padding(.bottom, 30)
+                                    .frame(width: 110, height: 110)
+                             
                                 
-                               
+                                EmailCustomTextField(text: $username, placeHolder: "Enter your email", titel: Text("Email"))
+                                    .padding()
                                 
+                                SecureInputView("Enter your Password".localized, text: $password)
+                                    .padding()
+                                
+                                
+                         VStack(alignment: .leading) {
+                                if authViewModel.noUser {
+                                    
+                                      HStack {
+                                        
+                                    Image("x")
+                                            .resizable()
+                                            .frame(width: 15, height: 15)
+                                        
+                                    Text("Incorrect email or password")
+                                            .foregroundColor(.red)
+                                        
+                                    }
+                                    .onAppear(perform: {
+                                        isLoading = false
+                                    })
+                                }
+                            }
                                 
                                 Button {
                                     isLoading = true
-                                    authViewModel.loginAction(user: username, pass: password) 
-                                    
+                                    authViewModel.loginAction(user: username, pass: password)
+                                    authViewModel.noUser = false
                                     
                                 } label: {
-                                    Text("Sign In").foregroundColor(.white)
-                                        .frame(width: 460, height: 65.0)
-                                        .background(Color(red: 0.463, green: 0.483, blue: 1.034))
+                                    Text("Login")
+                                        .foregroundColor(.white)
+                                        .frame(width: UIScreen.main.bounds.width * 0.32, height: UIScreen.main.bounds.height * 0.06)
+                                        .background((username.isEmpty || password.isEmpty) ? Color.init(UIColor(red: 0.437, green: 0.452, blue: 0.946, alpha: 0.38)) : Color.init(UIColor(red: 0.437, green: 0.452, blue: 0.946, alpha: 1)))
                                         .cornerRadius(12)
-                                      
-                                        
                                     
                                 }
-
+                                .padding()
+                                .disabled(username.isEmpty || password.isEmpty)
+                                
                                 
                                 HStack {
-                                    Text("Don't have an account?").foregroundColor(.secondary)
-                                    
                                     
                                     Button {
-
-                                                                            
-                                                                            let url = NSURL(string: "mailto:mailto:ineffableteam2@gmail.com")
-                                                                                        UIApplication.shared.open(url! as URL)
-
-                                                                            
-                                                                        } label: {
-                                                                            Text("Contact us to create one".localized)
-                                                                                            .foregroundColor(.init(UIColor(red: 0.463, green: 0.483, blue: 1.034, alpha: 1)))
-                                                                            
-                                                                        }
-
-                              
-                                    
-                                    
+                                        
+                                        print("testing")
+                                        
+                                    } label: {
+                                        NavigationLink(destination: TabView()) {
+                                            Text("Skip").foregroundColor(.secondary)
+                                        }
+                                    }
+                                   
                                 }.padding()
-                   
+                                
                                 if isLoading{
-                                  
-                                
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: .init(UIColor(red: 0.463, green: 0.483, blue: 1.034, alpha: 1))))
-                                    .scaleEffect(1)
-                                
-                              
-                                              
-                                 
-                                }
                                     
-                            }.padding()
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle(tint: .init(UIColor(red: 0.463, green: 0.483, blue: 1.034, alpha: 1))))
+                                        .scaleEffect(1)
+                                    
+                                }
+                            }.padding(100)
                         }
                     }
                 }
-               
-        }
-
+            }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
+
 
 struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
@@ -114,33 +111,4 @@ struct LogInView_Previews: PreviewProvider {
             .previewInterfaceOrientation(.landscapeRight)
     }
 }
-struct SecureInputView: View {
-    
-    @Binding private var text: String
-    @State private var isSecured: Bool = true
-    private var title: String
-    
-    init(_ title: String, text: Binding<String>) {
-        self.title = title
-        self._text = text
-    }
-    
-    var body: some View {
-        ZStack(alignment: .trailing) {
-            Group {
-                if isSecured {
-                    SecureField(title, text: $text)
-                } else {
-                    TextField(title, text: $text)
-                }
-            }.padding(.trailing, 32)
 
-            Button(action: {
-                isSecured.toggle()
-            }) {
-                Image(systemName: self.isSecured ? "eye.slash" : "eye")
-                    .accentColor(.gray)
-            }
-        }
-    }
-}

@@ -8,14 +8,28 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestore
+
 
 class OrderViewModel: ObservableObject {
     
-    @Published var orderItems: [OrderItem] = []
+    @Published var order: Order
+    @Published var orderItems = [OrderItem]()
     var orderItemID: [String] = []
-    let orderDocRef: String = ""
+    var orderID: String = ""
     @ObservedObject var storeViewModel = StoreViewModel()
+    @Published var fetchOrder: Order
+    @Published var fetchOrder1: Order = Order(id: "", subTotal: 0.0, orderType: 0, paymentMethod: 0, items: [], itemQuantityTotal: 0)
+    private var db = Firestore.firestore()
+
     
+    init(order: Order = Order(id: "", subTotal: 0.0, orderType: 0, paymentMethod: 0, items: [], itemQuantityTotal: 0) ) {
+        self.order = order
+        fetchOrder =  Order(id: "", subTotal: 0.0, orderType: 0, paymentMethod: 0, items: [], itemQuantityTotal: 0)
+    }
+    
+
+  
     
     func fictchItem(ItemId: String) {
         DispatchQueue.main.async {
@@ -44,13 +58,14 @@ class OrderViewModel: ObservableObject {
                                                   batches: document["batches"] as? Array<String> ?? [String](), uid: ""
                             )
                             
+                            
                             let newValue = product.qy - 1
                             print("newValue is \(newValue)")
                             
                             self.updateQy(productToUpdate: product, newValue: newValue)
                             
                           
-                     if self.orderItems.contains(where:{ $0.productId == ItemId}){
+                             if self.orderItems.contains(where:{ $0.productId == ItemId}){
                                 let orderItem = self.orderItems.first(where: { $0.productId == ItemId})
                                 orderItem?.quantity += 1
                                 print("The price is: \(product.price)")
@@ -78,74 +93,153 @@ class OrderViewModel: ObservableObject {
     
     
     
-    func newOrder(total: Double, orderType: Int, paymentMethod: Int, itemQuantityTotal: Int ) {
+    func setOrderData(subTotal: Double, orderType: Int, paymentMethod: Int, itemQuantityTotal: Int ) {
         
-        let orderDocRef = Firestore.firestore().collection("Orders").document()
-        
-        let data : [String:Any] = [Order.id : orderDocRef.documentID,
-                                   Order.total : total,
-                                   Order.date : Timestamp(date: Date()),
-                                   Order.orderType : orderType,
-                                   Order.paymentMethod : paymentMethod,
-                                   Order.items : orderItemID,
-                                   Order.itemQuantityTotal : itemQuantityTotal ]
-        
-        orderDocRef.setData(data)
+        order.id = UUID().uuidString
+        order.subTotal = subTotal
+        order.orderType = orderType
+        order.paymentMethod = paymentMethod
+        order.items = orderItemID
+        order.itemQuantityTotal = itemQuantityTotal
+        orderID = order.id
     }
     
     
-    func newOrderItem(productId: String, quantity: Int) {
+    private func addNewOrder(_ order: Order){
+        do {
+            let _ = db.collection("Orders").addDocument(data: order.dictionary)
+        }
+    }
+    
+    
+    func newOrder() {
+        self.addNewOrder(order)
+    }
+    
+    
+    func fetchOrder(orderID: String) {
+        print("Hi here is fetchOrder")
+        db.collection("Orders").whereField("id", isEqualTo: orderID).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else if querySnapshot != nil {
+                DispatchQueue.main.async {
+                    var _: [()] = querySnapshot!.documents.map { d in
+                        
+                        // Create a batch item for each document returned
+                        let order :Order = Order(id: d["id"] as? String ?? "",
+                                                 subTotal: d["subTotal"] as? Double ?? 0.0,
+                                                 orderType: d["orderType"] as? Int ?? 0,
+                                                 paymentMethod: d["paymentMethod"] as? Int ?? 0,
+                                                 items: d["items"] as? Array<String> ?? [String](),
+                                                 itemQuantityTotal: d["itemQuantityTotal"] as? Int ?? 0
+                        )
+                        
+                        
+                        
+                        self.fetchOrder = order
+                       
+                        
+                        print("self.fetchOrder.items.count \((self.fetchOrder.items.count))")
+                       
+                        
+                        
+                      print("fetchOrder id \(self.fetchOrder.id)")
+                        return
+                    }
+                    
+                    for orderItem in self.fetchOrder.items {
+                               usleep(100000)
+                                print("hi here is for orderItem in self.fetchOrder.items !!")
+                                print("orderItemId \(orderItem)")
+                               self.fetchOrderItem(orderItemID: orderItem)
+                           }
+                   
+                }
+        
+            }
+            
+            
+            else{
+                print("Something went wrong, please try agin.")
+            }
+            
+        }
+   }
+    
+    
+    
+    func newOrderItem(productId: String, quantity: Int, priceForEachItem: Double, itemNameEng: String, itemNameAR: String) {
         
         let docRef = Firestore.firestore().collection("OrderItems").document()
         
         let data : [String:Any] = [OrderItem.id : docRef.documentID,
-                                 
+                                   OrderItem.itemNameEng : itemNameEng,
+                                   OrderItem.itemNameAR: itemNameAR,
                                    OrderItem.productId : productId,
-                                   OrderItem.quantity : quantity ]
+                                   OrderItem.quantity : quantity,
+                                   OrderItem.priceForEachItem : priceForEachItem]
         docRef.setData(data)
         
         orderItemID.append(docRef.documentID)
     }
     
     
-    
-    func newInvoice( receivedAmount: Double, leftAmount:Double, deservedAmount: Double, subTotal: Double, tax: Double) {
-        
-        let docRef = Firestore.firestore().collection("Invoice").document()
-       
-        let data : [String:Any] = [Invoice.id : docRef.documentID,
-                                   Invoice.storeId : "1",
-                                   Invoice.orderInfo : orderDocRef,
-                                   Invoice.receivedAmount : receivedAmount,
-                                   Invoice.leftAmount : leftAmount,
-                                   Invoice.deservedAmount : deservedAmount,
-                                   Invoice.subTotal : subTotal,
-                                   Invoice.tax : tax ]
-        
-        docRef.setData(data)
-    }
-    
-    func getStoreID() -> String{
-        var storeId: String = ""
-        
-        storeViewModel.fetchStoreInfo(completion: { store in
-            storeId = store.StoreID
-            print("The store id is : \(store.StoreID)")
-            print("The store id is : \(store.storeName)")
+    func fetchOrderItem(orderItemID: String) {
+        print("Hi here is fetchOrderItem")
+        db.collection("OrderItems").whereField("id", isEqualTo: orderItemID).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else if querySnapshot != nil {
+                DispatchQueue.main.async {
+                    var _: [()] = querySnapshot!.documents.map { d in
+                        
+                        // Create a batch item for each document returned
+                        let orderItem :OrderItem = OrderItem(dictionary: [
+                            OrderItem.id: d["id"] as? String ?? "",
+                            OrderItem.itemNameAR: d["itemNameAR"] as? String ?? "",
+                            OrderItem.itemNameEng: d["itemNameEng"] as? String ?? "",
+                            OrderItem.productId: d["productId"] as? String ?? "",
+                            OrderItem.quantity: d["quantity"] as? Double ?? 0.0,
+                            OrderItem.priceForEachItem: d["priceForEachItem"] as? Double ?? 0.0
+                                                 ])
+                        
+                        
+                        
+                        self.orderItems.append(orderItem)
+                        
+                        print(" self.orderItems.count \(self.orderItems.count)")
+                        return
+                    }
+                }
+            }
+            else{
+                print("Something went wrong, please try agin.")
+            }
             
-        })
-        return storeId
+        }
     }
     
-    
-    
-    func totalItem() -> Double {
+
+    func subTotalItem() -> Double {
         if orderItems.count > 0 {
             return orderItems.lazy.compactMap { $0.priceForEachItem }
                 .reduce(0, +)
             
         }
         return 0
+    }
+    
+    
+    func tax() -> Double {
+        
+        return totalItem() * 0.15
+    }
+    
+    
+    func totalItem() -> Double {
+       
+        return ((subTotalItem()) + ((subTotalItem() * 0.15)))
     }
     
     
@@ -161,6 +255,19 @@ class OrderViewModel: ObservableObject {
             }
         }
     }
-    
-    
 }
+
+
+extension Date {
+
+ static func getCurrentDate() -> String {
+
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+
+        return dateFormatter.string(from: Date())
+
+    }
+}
+

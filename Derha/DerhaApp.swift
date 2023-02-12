@@ -10,28 +10,32 @@ import Firebase
 @main
 struct AJApp: App {
   
+    
+    
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
-   
+     
+    
     var body: some Scene {
         let authViewModel = AuthViewModel()
-    
+        let loginPopUpCheck = LoginPopUpCheck()
+        let cashBoxOpen = CashBoxOpen()
+        let cashBoxViewModel = CashBoxViewModel()
+        
         WindowGroup {
             MainView()
-               
                 .environmentObject(authViewModel)
-              
+                .environmentObject(loginPopUpCheck)
+                .environmentObject(cashBoxOpen)
+                .environmentObject(cashBoxViewModel)
                 .environment(\.colorScheme, .light)
-                
-                
-            
         }
-        
-        
     }
+    
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return AppDelegate.orientationLock
     }
 }
+
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -40,6 +44,5 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     FirebaseApp.configure()
     return true
   }
-    
-  
+ 
 }

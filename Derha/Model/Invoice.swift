@@ -6,49 +6,36 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct Invoice: Identifiable{
-    let id: String
-    let storeId: String
-    let orderInfo: String
-    let receivedAmount: Double
-    let leftAmount: Double
-    let deservedAmount: Double
-    let subTotal: Double
-    let tax: Double
+struct Invoice: Identifiable, Hashable, Codable {
+    var id: String
+    var orderInfo: String
+    var receivedAmount: Double
+    var leftAmount: Double
+    var deservedAmount: Double
+    var total: Double
+    var tax: Double
+    var time: String
+    var code: String
+    var uid: String
     
-    init(dictionary: [String: Any]) {
-        
-        self.id = dictionary[Invoice.id] as? String ?? ""
-        self.storeId = dictionary[Invoice.storeId] as? String ?? ""
-        self.orderInfo = dictionary[Invoice.orderInfo] as? String ?? ""
-        self.receivedAmount = dictionary[Invoice.receivedAmount] as? Double ?? 0.0
-        self.leftAmount = dictionary[Invoice.leftAmount] as? Double ?? 0.0
-        self.deservedAmount = dictionary[Invoice.deservedAmount] as? Double ?? 0.0
-        self.subTotal = dictionary[Invoice.subTotal] as? Double ?? 0.0
-        self.tax = dictionary[Invoice.tax] as? Double ?? 0.0
-    }
+    enum CodingKeys: String, CodingKey {
+        case id
+        case orderInfo
+        case receivedAmount = "receivedAmount"
+        case leftAmount = "leftAmount"
+        case deservedAmount = "deservedAmount"
+        case total = "total"
+        case tax = "tax"
+        case time
+        case code
+        case uid
+      }
     
-    
-    static let order :Order = Order(dictionary: [Invoice.id: "123",
-                                                 Invoice.storeId: "1234",
-                                                 Invoice.orderInfo: "1234",
-                                                 Invoice.receivedAmount: 0.0,
-                                                 Invoice.leftAmount: 0.0,
-                                                 Invoice.deservedAmount: 0.0,
-                                                 Invoice.invoiceRef: "12345",
-                                                 Invoice.subTotal: 0.0,
-                                                 Invoice.tax: 0.0
-                                                ])
-    
-    static let id = "id"
-    static let storeId = "storeId"
-    static let orderInfo = "orderInfo"
-    static let receivedAmount = "receivedAmount"
-    static let leftAmount = "leftAmount"
-    static let deservedAmount = "deservedAmount"
-    static let invoiceRef = "invoiceRef"
-    static let subTotal = "subTotal"
-    static let tax = "tax"
+    var dictionary: [String: Any] {
+            let data = (try? JSONEncoder().encode(self)) ?? Data()
+            return (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]) ?? [:]
+        }
     
 }

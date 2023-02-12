@@ -8,46 +8,31 @@
 import Foundation
 import Firebase
 
-struct Order: Identifiable{
-    let id: String
-    let total: Double
-    let date: Timestamp
-    let orderType: Int
-    let paymentMethod: Int
-    let items: Array<String>
-    let items3: Array<OrderItem>
-    let itemQuantityTotal: Int
+struct Order: Identifiable, Hashable, Codable{
+    var id: String
+    var subTotal: Double
+    var orderType: Int
+    var paymentMethod: Int
+    var items: Array<String>
+    var itemQuantityTotal: Int
     
-    init(dictionary: [String: Any]) {
-        self.id = dictionary[Order.id] as? String ?? ""
-        self.total = dictionary[Order.total] as? Double ?? 0.0
-        self.date = dictionary[Order.date] as? Timestamp ?? Timestamp(date: Date())
-        self.orderType = dictionary[Order.orderType] as? Int ?? 0
-        self.paymentMethod = dictionary[Order.paymentMethod] as? Int ?? 0
-        self.items = dictionary[Order.items] as? Array<String> ?? [String]()
-        self.items3 = dictionary[Order.items3] as? Array<OrderItem> ?? [OrderItem]()
-        self.itemQuantityTotal = dictionary[Order.itemQuantityTotal] as? Int ?? 0
+
+    
+    enum CodingKeys: String, CodingKey {
+    case id
+    case subTotal = "subTotal"
+    case orderType = "orderType"
+    case paymentMethod = "paymentMethod"
+    case items
+    case itemQuantityTotal = "itemQuantityTotal"
+
     }
     
     
-    static let order :Order = Order(dictionary: [Order.id: "123",
-                                                 Order.total: 0.0,
-                                                 Order.date: Timestamp(date: Date()),
-                                                 Order.orderType: 0,
-                                                 Order.paymentMethod: 0,
-                                                 Order.items: ["Milk", "water"],
-                                                 Order.itemQuantityTotal: 0
-                                                ])
+    var dictionary: [String: Any] {
+            let data = (try? JSONEncoder().encode(self)) ?? Data()
+            return (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]) ?? [:]
+        }
     
-    
-    static let id = "id"
-    static let total = "total"
-    static let date = "date"
-    static let orderType = "orderType"
-    static let paymentMethod = "paymentMethod"
-    static let items = "items"
-    static let itemQuantityTotal = "itemQuantityTotal"
-    static let items3 = "items3"
-
     
 }

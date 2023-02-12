@@ -171,7 +171,7 @@ struct TableNewProductView: View {
                      })
                      
                      
-                     .listStyle(SidebarListStyle())
+                     .listStyle(.plain)
 
 
                         

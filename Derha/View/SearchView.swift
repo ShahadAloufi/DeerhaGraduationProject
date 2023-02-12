@@ -23,7 +23,7 @@ struct SearchView: View {
                     .overlay(
                         HStack{
                             Image(systemName: "magnifyingglass")
-                                .foregroundColor(.gray)
+                                .foregroundColor(.init(Color(red: 0.463, green: 0.483, blue: 1.034)))
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                                 .padding(.leading, 15)
                             

@@ -10,7 +10,14 @@ import SwiftUI
 struct StockView: View {
     @ObservedObject var vm = ProdctViewModel()
     @State var SearchText: String = ""
- 
+    
+       @State var username = ""
+       @State var password = ""
+       @State var isLoading = false
+      
+       @EnvironmentObject var loginPopUpCheck: LoginPopUpCheck
+       @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
         
         ZStack {
@@ -18,6 +25,7 @@ struct StockView: View {
             .ignoresSafeArea()
             
             VStack {
+                
                 VStack {
                     HStack {
                         SearchView(SearchText: $SearchText)
@@ -58,6 +66,16 @@ struct StockView: View {
             
             
                 .ignoresSafeArea(.keyboard, edges: .bottom)
+            
+            if  loginPopUpCheck.showingLoginAlert {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.vertical)
+                
+                LoginPopUp(username: username, password: password, isLoading: isLoading, authViewModel: _authViewModel)
+                    .opacity(loginPopUpCheck.showingLoginAlert ? 1 : 0)
+            
+            
+            
         
         }
         
@@ -68,6 +86,9 @@ struct StockView: View {
     
     
 }
+
+}
+
 
 struct StockView_Previews: PreviewProvider {
     @State var SearchText: String = ""

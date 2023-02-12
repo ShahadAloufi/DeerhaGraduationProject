@@ -10,6 +10,8 @@ import Foundation
 import FirebaseFirestore
 import Combine
 import SwiftUI
+import Firebase
+
 class ProdctViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
@@ -74,9 +76,7 @@ class ProdctViewModel: ObservableObject {
 
     func handleDoneTapped() {
         self.updateOrAddProduct()
-      
-     
-        
+       
       }
        
       func handleDeleteTapped() {
@@ -105,6 +105,7 @@ class ProductsViewModel: ObservableObject {
       listenerRegistration = nil
     }
   }
+    
     func subscribe(uid: String) {
 
                 if listenerRegistration == nil {
@@ -122,6 +123,7 @@ class ProductsViewModel: ObservableObject {
                 }
             }
    
+    
   func subscribe() {
     if listenerRegistration == nil {
       listenerRegistration = db.collection("Product").addSnapshotListener { (querySnapshot, error) in
@@ -132,7 +134,6 @@ class ProductsViewModel: ObservableObject {
          
         self.product = documents.compactMap { queryDocumentSnapshot in
           try? queryDocumentSnapshot.data(as: Product.self)
-            
             
         }
       }

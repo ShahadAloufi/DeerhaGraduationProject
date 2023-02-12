@@ -5,16 +5,20 @@
 //  Created by Rahaf Alhubeis on 07/12/1443 AH.
 //
 
+
 import Foundation
-import Firebase
+import FirebaseFirestore
 import Combine
 import SwiftUI
+import Firebase
+import FirebaseFirestoreSwift
 
-class BatchViewModel : ObservableObject{
+class BatchViewModel : ObservableObject {
     
     @Published var newBatchesArray = [Batche]()
     @Published var batches = [Batche]()
     @Published var batchesID = [String]()
+    @Published var batchesIDFetch = [String]()
     private var db = Firestore.firestore()
     @Published var batche: Batche
     @Published var modified = false
@@ -32,7 +36,6 @@ class BatchViewModel : ObservableObject{
             }
             .store(in: &self.cancellables)
     }
-    
     
     
     func emptyBatcheArray(expirationDate: String, quantity: Double) {
@@ -55,9 +58,8 @@ class BatchViewModel : ObservableObject{
     }
     
     
-    func fetchBatch(batcheID: String, product: Product) {
+    func fetchBatch(batcheID: String) {
         // Get a reference to the database
-        let db = Firestore.firestore()
         
         db.collection("Batch").whereField("id", isEqualTo: batcheID).getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -75,11 +77,10 @@ class BatchViewModel : ObservableObject{
                         print ("batche.expirationDate\(batche.expirationDate)")
                         
                         self.batches.append(batche)
-                     
-                        self.checkDate(batche: batche, product: product)
+                        
+                        // self.checkDate(batche: batche, product: product)
                         return
                     }
-                    
                 }
             }
             else{
@@ -89,43 +90,61 @@ class BatchViewModel : ObservableObject{
         }
     }
     
+//    func fetchBatcheByID (productCode : String){
+//
+//
+//        let db = Firestore.firestore()
+//        db.collection("Product").whereField("barcodeNumber", isEqualTo: productCode).getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else if let query = querySnapshot {
+//                let documents = query.documents
+//                for doc in documents {
+//                    let product = Product(id: doc.documentID,
+//                                          barcodeNumber: doc["barcodeNumber"] as? String ?? "",
+//                                          arabicProductName: doc["arabicProductName"] as? String ?? "",
+//                                          englishProductName:doc["englishProductName"] as? String ?? "",
+//                                          qy: doc["qy"] as? Double ?? 0.0,
+//                                          remainingQuantityAlert: doc["remainingQuantityAlert"] as? Int ?? 0,
+//                                          price: doc["price"] as? Double ?? 0.0,
+//                                          unit: doc["unit"] as? String ?? "",
+//                                          expdate: doc["expdate"] as? String ?? "",
+//                                          ProductCategory: doc["ProductCategory"] as? String ?? "",
+//                                          productDiscription: doc["productDiscription"] as? String ?? "",
+//                                          batches: doc["batches"] as? Array<String> ?? [String](), uid: ""
+//                    )
+//
+//                    for producBatche in product.batches{
+//                        self.fetchBatch(batcheID: producBatche, product: product)
+//
+//                    }
+//
+//                }
+//            }else{
+//                print("Something went wrong, please try agin.")
+//            }
+//
+//        }
+//    }
+    
     func fetchBatcheByID (productCode : String){
         
-
-        let db = Firestore.firestore()
         db.collection("Product").whereField("barcodeNumber", isEqualTo: productCode).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
-            } else if let query = querySnapshot {
-                let documents = query.documents
-                for doc in documents {
-                    let product = Product(id: doc.documentID,
-                                          barcodeNumber: doc["barcodeNumber"] as? String ?? "",
-                                          arabicProductName: doc["arabicProductName"] as? String ?? "",
-                                          englishProductName:doc["englishProductName"] as? String ?? "",
-                                          qy: doc["qy"] as? Double ?? 0.0,
-                                          remainingQuantityAlert: doc["remainingQuantityAlert"] as? Int ?? 0,
-                                          price: doc["price"] as? Double ?? 0.0,
-                                          unit: doc["unit"] as? String ?? "",
-                                          expdate: doc["expdate"] as? String ?? "",
-                                          ProductCategory: doc["ProductCategory"] as? String ?? "",
-                                          productDiscription: doc["productDiscription"] as? String ?? "",
-                                          batches: doc["batches"] as? Array<String> ?? [String](), uid: ""
-                    )
-                    
-                    for producBatche in product.batches{
-                        self.fetchBatch(batcheID: producBatche, product: product)
-                        
-                    }
+            } else {
+                for document in querySnapshot!.documents {
+                    let batcheID = document.get("batches") as! Array<String>
+                    self.batchesIDFetch =  batcheID
                     
                 }
-            }else{
-                print("Something went wrong, please try agin.")
+                for producBatche in self.batchesIDFetch{
+                    usleep(100000)
+                    self.fetchBatch(batcheID: producBatche)
+                }
             }
-            
         }
     }
-    
     
     func newBatch(product: Product, batche: Batche) {
         
@@ -154,25 +173,27 @@ class BatchViewModel : ObservableObject{
         }
     }
 
+    
+    //YESSSS
     func deleteBatch (product: Product, batche: Batche) {
-            DispatchQueue.main.async {
-            let db = Firestore.firestore()
-
-                db.collection("Batch").whereField("id", isEqualTo: batche.id).getDocuments { (snap , err ) in
+        DispatchQueue.main.async {
+          
+            Firestore.firestore().collection("Batch").whereField("id", isEqualTo: batche.id).getDocuments { (snap , err ) in
                 if err != nil{
                     print("Error")
                     return
                 }
                 for document in snap!.documents{
-
+                    
                     document.reference.delete()
-
+                    
                 }
             }
-         }
         }
+    }
 
 
+    //YYYEESSS
         func removeBatcheFromProduct (productToUpdate: Product, batche: Batche){
 
             if productToUpdate.id != nil {
@@ -184,7 +205,9 @@ class BatchViewModel : ObservableObject{
             }
         }
     
+    
     func checkDate(batche: Batche, product: Product){
+      
         let date = Date()
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
@@ -196,67 +219,9 @@ class BatchViewModel : ObservableObject{
     }
     
     
-    func deletBatche(batcheToDelet: Batche, product: Product) {
-        
-        // Get a reference to the database
-        let db = Firestore.firestore()
-        
-        // Specify the document to delete
-        db.collection("Batch").document(batcheToDelet.id).delete { error in
-            
-            // Check for errors
-            if error == nil {
-                // No errors
-                
-                // Update the UI from the main thread
-                DispatchQueue.main.async {
-                    
-                    // Remove the todo that was just deleted
-                    self.batches.removeAll { batche in
-                        // Check for the product to remove
-                        return batche.id == batcheToDelet.id
-                    }
-                    
-                    
-                    if self.batches.count > 0 {
-                        self.updateDate(productToUpdate: product, newValue: self.batches[0].expirationDate)
-                    }
-                }
-            }
-        }
-    }
-    
-    func removeBatch(batcheToDelet: Batche, product: Product) {
-        //        if let documentId = batcheToDelet.id {
-        
-        db.collection("Batch").document(batcheToDelet.id).delete { error in
-            if let error = error {
-                print("Unable to remove document: \(error.localizedDescription)")
-            }
-            else{
-                print("Hi we are in the else!")
-                DispatchQueue.main.async {
-                    
-                    // Remove the batche that was just deleted
-                    self.batches.removeAll { batche in
-                        // Check for the product to remove
-                        return batche.id == batcheToDelet.id
-                    }
-                    
-                    let newValue = product.qy - batcheToDelet.quantity
-                    self.updateQy(productToUpdate: product, newValue: newValue)
-                    
-                    if self.batches.count > 0 {
-                        self.updateDate(productToUpdate: product, newValue: self.batches[0].expirationDate)
-                    }
-                }
-            }
-          
-        }
-    }
-    
     
     func totalQy() -> Double {
+       
         if batches.count > 0 {
             return batches.lazy.compactMap { Double($0.quantity) }
                 .reduce(0, +)
@@ -266,11 +231,9 @@ class BatchViewModel : ObservableObject{
     
     
     func updateQy(productToUpdate: Product, newValue: Double){
-        
-        
-        let db = Firestore.firestore()
+      
         if productToUpdate.id != nil {
-            db.collection("Product").document(productToUpdate.id ?? "").updateData([
+            db.collection("Product").document(productToUpdate.id!).updateData([
                 "qy": newValue
             ]){err in
                 if let err = err {
@@ -294,9 +257,6 @@ class BatchViewModel : ObservableObject{
     
     
     func updateDate(productToUpdate: Product, newValue: String){
-        
-       
-        let db = Firestore.firestore()
         if productToUpdate.id != nil {
             db.collection("Product").document(productToUpdate.id ?? "").updateData([
                 "expdate": newValue
@@ -307,4 +267,6 @@ class BatchViewModel : ObservableObject{
             }
         }
     }
+    
+    
 }

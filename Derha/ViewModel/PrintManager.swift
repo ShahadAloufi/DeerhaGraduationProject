@@ -16,6 +16,8 @@ class PrintManager {
     
     let bluetoothPrinterManager = BluetoothPrinterManager()
     var printerSize: PrinterSize = .printer57mm
+    @StateObject var invoiceViewModel = InvoiceViewModel()
+
     
 
     func printBlank(){
@@ -26,7 +28,7 @@ class PrintManager {
         }
     }
     
-    func printTicket(_ storeName: String, cartItems: [OrderItem]){
+    func printTicket(_ storeName: String, cartItems: [OrderItem], code: String){
         
         var ticket = Ticket()
         ticket.add(block: .title(storeName))
@@ -47,9 +49,9 @@ class PrintManager {
         ticket.add(block: .dashs)
         
         ticket.add(block: .blank)
-        let qrInfo = "\(storeName) 1234567 \(Date().description) 123.12 17.4"
-        let base64Info = qrInfo.data(using: .utf8)?.base64EncodedString() ?? "N/A"
-        guard let qr = QRManager.generateQRCode(from: base64Info) else { return }
+//        let qrInfo = "\(storeName) 1234567 \(Date().description) 123.12 17.4"
+//        let base64Info = qrInfo.data(using: .utf8)?.base64EncodedString() ?? "N/A"
+        guard let qr = QRManager.generateQRCode(from: code) else { return }
         guard let centeredQR = qr.alignmentImageIn(width: PrintManager.shared.printerSize.getPoints(), alignment: .center) else { return }
         ticket.add(block: .image(centeredQR))
         
@@ -64,6 +66,24 @@ class PrintManager {
             PrintManager.shared.bluetoothPrinterManager.print(ticket)
         }
     }
+    
+    
+    func QRcode(storeName: String) -> UIImage {
+        let newUIImage = UIImage(systemName: "")
+        let qrInfo = "\(storeName) 1234567 \(Date().description) 123.12 17.4"
+        let base64Info = qrInfo.data(using: .utf8)?.base64EncodedString() ?? "N/A"
+        guard let qr = QRManager.generateQRCode(from: base64Info)
+        else {
+            return newUIImage!
+        }
+        guard let centeredQR = qr.alignmentImageIn(width: PrintManager.shared.printerSize.getPoints(), alignment: .center)
+        else {
+            return newUIImage!
+        }
+        
+        return centeredQR
+    }
+    
 }
 
 struct PrinterVC: UIViewControllerRepresentable {

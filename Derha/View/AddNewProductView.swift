@@ -7,7 +7,16 @@
 import SwiftUI
 
 struct AddNewProduct: View {
+    
     @State var editMode: EditMode = .active
+   
+    @State var username = ""
+    @State var password = ""
+    @State var isLoading = false
+   
+    @EnvironmentObject var loginPopUpCheck: LoginPopUpCheck
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var cashBoxOpen: CashBoxOpen
    
     var body: some View {
         ZStack {
@@ -54,6 +63,26 @@ struct AddNewProduct: View {
                     }
                 }.preferredColorScheme(.light)
             }
+            
+            
+            if  loginPopUpCheck.showingLoginAlert {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.vertical)
+                
+                LoginPopUp(username: username, password: password, isLoading: isLoading, authViewModel: _authViewModel)
+                    .opacity(loginPopUpCheck.showingLoginAlert ? 1 : 0)
+            }
+            
+            if  cashBoxOpen.showingCashBoxAlert {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.vertical)
+
+                CashBoxPopUpView()
+                    .opacity(cashBoxOpen.showingCashBoxAlert ? 1 : 0)
+            }
+
+            
+            
         }
         
     }

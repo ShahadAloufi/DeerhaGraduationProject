@@ -8,28 +8,25 @@
 import Foundation
 import Firebase
 
-struct Store {
+struct Store: Identifiable, Hashable, Codable{
     
-    let StoreID: String
-    let address: String
-    let storeName: String
-    let storePhoneNumber: String
-    let taxNumber: String
+    var id: String
+    var address: String
+    var storeName: String
+    var storePhoneNumber: String
+    var taxNumber: String
     
-    
-    init(dictionary: [String: Any]) {
-        self.StoreID = dictionary[Store.StoreID] as? String ?? ""
-        self.address = dictionary[Store.address] as? String ?? ""
-        self.storeName = dictionary[Store.storeName] as? String ?? ""
-        self.storePhoneNumber = dictionary[Store.storePhoneNumber] as? String ?? ""
-        self.taxNumber = dictionary[Store.taxNumber] as? String ?? ""
+    enum CodingKeys: String, CodingKey {
+    case id
+    case address
+    case storeName
+    case storePhoneNumber
+    case taxNumber
+  
     }
     
-    
-    static let StoreID = "StoreID"
-    static let address = "address"
-    static let storeName = "storeName"
-    static let storePhoneNumber = "storePhoneNumber"
-    static let taxNumber = "taxNumber"
-  
+    var dictionary: [String: Any] {
+            let data = (try? JSONEncoder().encode(self)) ?? Data()
+            return (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]) ?? [:]
+        }
 }

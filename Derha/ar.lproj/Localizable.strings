@@ -6,9 +6,44 @@
   
 */
 
-
 "Checkout" = "الدفع";
-"Online Order" = "الطلب اونلاين";
+"Cashbox" = "الصندوق";
+"Daily" = "الفواتير اليومية";
+"Bills during this day" = "الفواتير خلال اليوم";
+"invoice number: #" = "رقم الفاتورة";
+"INVOICE" = "فاتورة";
+"Monthly" = "الفواتير الشهرية";
+"Yearly" = "الفواتير السنوية";
+"Grand total" = "المجموع الكلي";
+"Product" = "المنتج";
+"Qty" = "الكمية";
+"Date:" = "التاريخ";
+"Time:" = "الوقت";
+"Sales" = "المبيعات";
+"Previous Balance" = "الرصيد السابق";
+"Total Net Cash" = "اجمالي صافي الكاش";
+"Open the cashbox" = "افتح الصندوق";
+"Close the cashbox" = "اغلق الصندوق";
+"History for today" = "سجل اليوم";
+"Cashbox Status is" = "حالة الصندوق";
+"Closed" = "مغلق";
+"Opened" = "مفتوح";
+"Total Net Credit Card" = "اجمالي صافي البطاقة الائتمانية";
+"Total Net Sales" = "اجمالي صافي المبيعات";
+"Total Sales" = "اجمالي المبيعات";
+"Credit Card Total" = "اجمالي البطاقة الائتمانية";
+"Cash Total" = "اجمالي الكاش";
+"Fiat Cash" = "فئة الكاش";
+"Coins" = "فئة النقود المعدنية";
+"Kg" = "كيلو غرام";
+"Peice" = "قطع";
+"l" = "لتر";
+"ml" = "مل";
+"Ex:20" = "مثل ٢٠";
+"Ex: 10" = "مثل ١٠";
+"Ex: 40 SAR" = "مثل ٤٠ ريال سعودي";
+"Currency denomination" = "فئة العملة";
+"Invoice" = "الفواتير";
 "Stock" = "المخزون";
 "Add Product" = "أضف منتج";
 "Sami" = "سامي";
@@ -101,3 +136,4 @@
 "Ex: 10" = "مثل: ١٠";
 "Ex: 40 SAR" = "مثل: ٤٠ ريال سعودي";
 "Successfully Added" = "تمت الإضافة بنجاح";
+" Search by invoice number here" = "ابحث برقم الفاتورة هنا";

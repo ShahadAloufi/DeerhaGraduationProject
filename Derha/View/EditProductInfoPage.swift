@@ -43,7 +43,8 @@ struct EditProductInfoPage: View {
                                 
                             }
                         }
-            
+            let totalQy = batchViewModel.totalQy()
+                        batchViewModel.updateQy(productToUpdate: viewModel.product, newValue: totalQy)
             presentationMode.wrappedValue.dismiss()
             
             
@@ -284,19 +285,24 @@ struct EditProductInfoPage: View {
                                                                                                         print("The addCount is \(addCount)")
                                                                                                     }
                                                                                                 }
+                                                                                                else {
+                                                                                                    viewModel.product.batches.remove(at: index-1)
+                                                                                                }
                                                                                                 batchViewModel.deleteBatch(product: viewModel.product, batche: batchViewModel.batches[index-1])
                                                                                                 
                                                                                                 
-                                                                                                let totalQy = batchViewModel.totalQy()
-                                                                                                batchViewModel.updateQy(productToUpdate: viewModel.product, newValue: totalQy)
+                                                                                                //                                                    let totalQy = batchViewModel.totalQy()
+                                                                                                //                                                    batchViewModel.updateQy(productToUpdate: viewModel.product, newValue: totalQy)
                                                                                                 batchViewModel.removeBatcheFromProduct(productToUpdate: viewModel.product, batche: batchViewModel.batches[index-1])
                                                                                                 viewModel.modified = true
                                                                                                 batchViewModel.modified = true
                                                                                                 
                                                                                                 print("batchViewModel.batches.count \(batchViewModel.batches.count)")
                                                                                                 print("viewModel.product.batches.count \(viewModel.product.batches.count)")
-                                                                                               
+                                                                                                
                                                                                                 batchViewModel.batches.remove(at: index-1)
+                                                                                                
+                                                                                                
                                                                                                 
                                                                                                 print("------------------------------------------------------------------")
                                                                                                 
@@ -304,10 +310,10 @@ struct EditProductInfoPage: View {
                                                                                                 print("batchViewModel.batches.count \(batchViewModel.batches.count)")
                                                                                                 print("viewModel.product.batches.count \(viewModel.product.batches.count)")
                                                                                                 
-                                                                                          
+                                                                                                
                                                                                                 
                                                                                                 print("The batchViewModel.batches is \(batchViewModel.batches.count)")
-                                                                                               
+                                                                                                
                                                                                                 
                                                                                             })
 
